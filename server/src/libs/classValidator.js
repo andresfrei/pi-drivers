@@ -1,91 +1,108 @@
 class Validator {
-  constructor (fieldName, value) {
-    this.field = fieldName
-    this.value = value
+  constructor (values) {
+    this.values = values
     this._errors = []
+    this.filds = new Set()
   }
 
-  isRequired () {
-    const res = !!this.value || this.value === 0
-    !res && this._errors.push('It is required')
+  isRequired (key) {
+    this.filds.add(key)
+    const res = !!this.values[key] || this.values[key] === 0
+    !res && this._errors[key].push('It is required')
     return res
   }
 
-  isNumber () {
-    const res = !isNaN(Number(this.value))
-    !res && this._errors.push('Not a number')
+  isNumber (key) {
+    this.filds.add(key)
+    const res = !isNaN(Number(this.values[key]))
+    !res && this._errors[key].push('Not a number')
     return res
   }
 
-  isString () {
-    const res = typeof this.value === 'string'
-    !res && this._errors.push('Not a string')
+  isString (key) {
+    this.filds.add(key)
+    const res = typeof this.values[key] === 'string'
+    !res && this._errors[key].push('Not a string')
     return res
   }
 
-  isEmail () {
+  isEmail (key) {
+    this.filds.add(key)
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    const res = regex.test(this.value)
-    !res && this._errors.push('Not an email')
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('Not an email')
     return res
   }
 
-  isMax (max) {
-    const res = this.value <= max
-    !res && this._errors.push(`Must be less than or equal to ${max}`)
+  isMax (key, max) {
+    const res = this.values[key] <= max
+    !res && this._errors[key].push(`Must be less than or equal to ${max}`)
     return res
   }
 
-  isMin (min) {
-    const res = this.value >= min
-    !res && this._errors.push(`Must be greater than or equal to ${min}`)
+  isMin (key, min) {
+    const res = this.values[key] >= min
+    !res && this._errors[key].push(`Must be greater than or equal to ${min}`)
     return res
   }
 
-  isRange (min, max) {
-    const res = this.value >= min && this.value <= max
-    !res && this._errors.push(`The value is out of the range ${min} and ${max}`)
+  isRange (key, min, max) {
+    const res = this.values[key] >= min && this.values[key] <= max
+    !res && this._errors[key].push(`The value is out of the range ${min} and ${max}`)
     return res
   }
 
-  isContainsLetters () {
+  isUrl (key) {
+    this.filds.add(key)
+    const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('Not an url')
+    return res
+  }
+
+  isContainsLetters (key) {
+    this.filds.add(key)
     const regex = /[a-zA-Z]/
-    const res = regex.test(this.value)
-    !res && this._errors.push('Must contain some letter')
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('Must contain some letter')
     return res
   }
 
-  isContainNumbers () {
+  isContainNumbers (key) {
+    this.filds.add(key)
     const regex = /\d/
-    const res = regex.test(this.value)
-    !res && this._errors.push('Must contain some number')
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('Must contain some number')
     return res
   }
 
-  isContainSymbols () {
+  isContainSymbols (key) {
+    this.filds.add(key)
     const regex = /\W/
-    const res = regex.test(this.value)
-    !res && this._errors.push('Must contain at least one symbol')
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('Must contain at least one symbol')
     return res
   }
 
-  isLongMin (long) {
-    const isText = typeof this.value === 'string'
-    const res = isText && this.value.length >= long
-    !res && this._errors.push(`Minimum length of ${long} characters`)
+  isLongMin (key, long) {
+    const isText = typeof this.values[key] === 'string'
+    const res = isText && this.values[key].length >= long
+    !res && this._errors[key].push(`Minimum length of ${long} characters`)
     return res
   }
 
-  isPasswordSecure () {
+  isPasswordSecure (key) {
+    this.filds.add(key)
     const regex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{5,}$/
-    const res = regex.test(this.value)
-    !res && this._errors.push('The password must have at least 5 characters, at least one letter, one number and one sign')
+    const res = regex.test(this.values[key])
+    !res && this._errors[key].push('The password must have at least 5 characters, at least one letter, one number and one sign')
     return res
   }
 
-  notEmpty () {
-    const res = !!this.value
-    !res && this._errors.push('The value cannot be empty')
+  notEmpty (key) {
+    this.filds.add(key)
+    const res = !!this.values[key]
+    !res && this._errors[key].push('The value cannot be empty')
     return res
   }
 
@@ -93,18 +110,21 @@ class Validator {
     return this._errors.length === 0
   }
 
-  errorMessage () {
-    return {
-      field: this.field,
-      value: this.value,
-      message: this._errors
-    }
+  filterData (res, next) {
+    const filteredData = Object.keys(this.values)
+      .filter(key => this.filds.has(key))
+      .reduce((obj, key) => {
+        obj[key] = this.values[key]
+        return obj
+      }, {})
+    res.body = filteredData
+    next()
   }
 
   resolve (res, next) {
     this.isValidate()
-      ? next()
-      : res.status(400).json(this.errorMessage())
+      ? this.filterData(res, next)
+      : res.status(400).json(this._errors)
   }
 }
 

@@ -1,5 +1,14 @@
 const { Op, literal } = require('sequelize')
-const { Driver, Team, Nationality } = require('../db')
+const { Driver, Team } = require('../db')
+
+// Funcion para crear un driver
+const createDriverService = async (data) => {
+  const { teams, ...restOfData } = data
+  console.log(restOfData, teams)
+  const driver = await Driver.create(restOfData)
+  driver.addTeams(teams)
+  return driver
+}
 
 // Funcion para buscar todos los drivers del modelo
 const findAllDriversService = async () => {
@@ -11,7 +20,7 @@ const findAllDriversService = async () => {
 const searchDriverService = async (query) => {
   const keys = Object.keys(query)
 
-  if (keys[0] === 'name') return await searchByName(query.name)
+  if (keys[0] === 'name') return await searchByName(query.name.toLowerCase())
   if (keys[0] === 'team') return await searchByTeam(query.team)
   if (keys[0] === 'nationality') return await searchByNationality(query.nationality)
 
@@ -22,18 +31,16 @@ const searchByName = async (name) => {
   const drivers = await Driver.findAll({
     where: {
       [Op.or]: [
-        literal(`nombre LIKE '%${name}%'`),
-        literal(`apellido LIKE '%${name}%'`)
+        literal(`LOWER(firstname) LIKE '%${name}%'`),
+        literal(`LOWER(lastname) LIKE '%${name}%'`)
       ]
     },
     include: {
       model: Team,
-      where: { name },
-      as: 'teams'
+      attributes: ['name']
     }
   })
-
-  return drivers
+  return drivers.map(driver => formattedDrivers(driver))
 }
 
 const searchByTeam = async (name) => {
@@ -41,23 +48,23 @@ const searchByTeam = async (name) => {
     include: {
       model: Team,
       attributes: ['name'],
-      where: { name },
-      as: 'teams'
+      where: { name }
     }
   })
 
-  return drivers
+  return drivers.map(driver => formattedDrivers(driver))
 }
 
-const searchByNationality = async (name) => {
+const searchByNationality = async (nationality) => {
   const drivers = await Driver.findAll({
-    include: [
-      Team,
-      { model: Nationality, where: { name } }
-    ]
+    where: { nationality },
+    include: {
+      model: Team,
+      attributes: ['name']
+    }
   })
 
-  return drivers
+  return drivers.map(driver => formattedDrivers(driver))
 }
 
 // Funcion para buscar un Drive en el modelo
@@ -67,4 +74,24 @@ const findOneDriverService = async (idDriver) => {
   return driver.toJSON()
 }
 
-module.exports = { searchDriverService, findOneDriverService, findAllDriversService }
+const formattedDrivers = (driver) => {
+  const teamNames = driver.Teams.map(team => team.name)
+  return {
+    id: driver.id,
+    firstname: driver.firstname,
+    lastname: driver.lastname,
+    description: driver.description,
+    image: driver.image,
+    nationality: driver.nationality,
+    birth: driver.birth,
+    wiki: driver.wiki,
+    teams: teamNames
+  }
+}
+
+module.exports = {
+  searchDriverService,
+  findOneDriverService,
+  findAllDriversService,
+  createDriverService
+}

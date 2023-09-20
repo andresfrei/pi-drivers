@@ -1,9 +1,12 @@
 const { Team } = require('../db')
-const { findProperiesForAPI } = require('./api.service')
+const { findTeamsAPIService } = require('./api.service')
 
 // Funcion para importar los teams de la API
 const insetTeamsForAPIService = async () => {
-  const { teams } = await findProperiesForAPI()
+  let teams = await findTeamsAPIService()
+  console.log(teams)
+  // Convierto en objeto con atributo name
+  teams = teams.map(team => { return { name: team } })
   const newTeams = await Team.bulkCreate(teams)
   return newTeams
 }
