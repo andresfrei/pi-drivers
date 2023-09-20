@@ -1,12 +1,13 @@
-const { findProperiesForAPI } = require('../services/api.service')
+const { insetTeamsForAPIService, findAllTeamsService } = require('../services/team.service')
 
+// Controlador que devuelve todos los dirvers
 const getAllTeams = async (req, res) => {
   try {
-    const result = await findProperiesForAPI()
-    console.log(result)
-    const { teams } = result
-    // const dbDrivers = await
-    // const drivers = [...apiDrivers]
+    let teams = await findAllTeamsService()
+
+    // Si no tengo Teams los importo
+    if (!teams.length) teams = await insetTeamsForAPIService()
+
     res.json({ teams })
   } catch ({ message }) {
     res.status(400).json(message)

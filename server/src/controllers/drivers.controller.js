@@ -1,6 +1,21 @@
 const { findDriversAPIService } = require('../services/api.service')
+const { findAllDriversService } = require('../services/drivers.service')
 
+// Controlador para buscar todos los drivers
 const getAllDrivers = async (req, res) => {
+  try {
+    // const apiDrivers = await findDriversAPIService()
+    const dbDrivers = await findAllDriversService()
+    // const drivers = [...apiDrivers, ...dbDrivers]
+    res.json({ drivers: dbDrivers })
+  } catch ({ message }) {
+    res.status(400).json(message)
+  }
+}
+
+// Controlador para buscar en Drivers
+// Recibe una query como argumento
+const searchDrivrs = async (req, res) => {
   try {
     const { query } = req
     const apiDrivers = await findDriversAPIService({ query })
@@ -12,4 +27,4 @@ const getAllDrivers = async (req, res) => {
   }
 }
 
-module.exports = { getAllDrivers }
+module.exports = { getAllDrivers, searchDrivrs }

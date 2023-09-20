@@ -1,6 +1,7 @@
 const axios = require('axios')
 const { API_URL_DRIVERS } = require('../config/constants')
 
+// Funcion para buscar Drivers en la API
 const findDriversAPIService = async (params) => {
   let data
   let filter
@@ -28,6 +29,7 @@ const findDriversAPIService = async (params) => {
   }
 }
 
+// Funcion para filtrar por nombre o apellido
 const filterToName = (data, name) => {
   return data.filter(item =>
     item.name.forename.toLowerCase().includes(name) ||
@@ -35,10 +37,12 @@ const filterToName = (data, name) => {
   )
 }
 
+// Funcion para leer los Teams y nationality de la API
 const findProperiesForAPI = async () => {
   const setTeams = new Set()
-  const setNationality = new Set()
+  const setNatiolalities = new Set()
 
+  // Busco todos los drivers
   const drivers = await findDriversAPIService()
   drivers.forEach(driver => {
     const { teams } = driver
@@ -46,11 +50,17 @@ const findProperiesForAPI = async () => {
       const arrayTeams = teams.split(',')
       arrayTeams.forEach(team => setTeams.add(team.trim()))
     }
-    setNationality.add(driver.nationality.trim())
+    setNatiolalities.add(driver.nationality.trim())
   })
-  const teams = Array.from(setTeams).sort()
-  const nationality = Array.from(setNationality).sort()
-  return { teams, nationality }
+  // Ordeno y transformo en objeto
+  let teams = Array.from(setTeams).sort()
+  teams = teams.map(name => { return { name } })
+
+  // Ordeno y transformo en objeto
+  const nationalities = Array.from(setNatiolalities).sort()
+  teams = teams.map(name => { return { name } })
+
+  return { teams, nationalities }
 }
 
 module.exports = { findDriversAPIService, findProperiesForAPI }
