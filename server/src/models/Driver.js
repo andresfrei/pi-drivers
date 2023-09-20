@@ -10,11 +10,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    firstName: {
+    firstname: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    lastName: {
+    lastname: {
       type: DataTypes.STRING,
       allowNull: true
     },
@@ -30,9 +30,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    dob: {
+    birth: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    wiki: {
+      type: DataTypes.STRING
     }
   },
   {

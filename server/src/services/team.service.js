@@ -10,7 +10,11 @@ const insetTeamsForAPIService = async () => {
 
 // Función para buscar todos los teams
 const findAllTeamsService = async () => {
-  const teams = await Team.findAll()
+  let teams = await Team.findAll()
+
+  // Si no tengo Teams los importo
+  if (!teams.length) teams = await insetTeamsForAPIService()
+
   return teams
 }
 

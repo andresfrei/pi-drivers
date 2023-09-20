@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const { getAllTeams } = require('../controllers/teams.controller')
+const { getAllNationalities } = require('../controllers/nationalities.controller')
 
-router.get('/', getAllTeams)
+router.get('/', getAllNationalities)
 
 module.exports = router

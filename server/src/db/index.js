@@ -27,17 +27,14 @@ const entries = Object.entries(sequelize.models)
 const capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]])
 sequelize.models = Object.fromEntries(capsEntries)
 
-const { Driver, Team, Nationality } = sequelize.models
+const { Driver, Team } = sequelize.models
 
 // Aca vendrian las relaciones
 Driver.belongsToMany(Team, { through: 'Driver_Team' })
 Team.belongsToMany(Driver, { through: 'Driver_Team' })
-Driver.belongsTo(Nationality)
-Nationality.hasMany(Driver)
 
 module.exports = {
   Driver,
   Team,
-  Nationality,
   conn: sequelize // para importart la conexión { conn } = require('./db.js');
 }

@@ -20,10 +20,28 @@ const findDriversAPIService = async (params) => {
     const response = await axios.get(url)
     data = response.data
 
-    // Si la busqueda es por nombre vuelvo a filtrar
+    // Si la busqueda es por nombre vuelvnpm o a filtrar
     if (query && query?.name) data = filterToName(data, query.name.toLowerCase())
 
-    return data
+    // Formateo según modelo para compatibilidad
+    const formatDrivers = data.map(driver => {
+      const teams = !driver.teams
+        ? []
+        : driver.teams.split(',').map(team => { return { name: team.trim() } })
+      return {
+        id: driver.id,
+        firstname: driver.name.forename,
+        lastname: driver.name.surname,
+        description: driver.description,
+        image: driver.image.url,
+        nationality: driver.nationality,
+        birth: new Date(driver.dob), // formato fecha
+        wiki: driver.url,
+        teams
+      }
+    })
+
+    return formatDrivers
   } catch ({ message }) {
     return { message }
   }
@@ -58,7 +76,6 @@ const findProperiesForAPI = async () => {
 
   // Ordeno y transformo en objeto
   const nationalities = Array.from(setNatiolalities).sort()
-  teams = teams.map(name => { return { name } })
 
   return { teams, nationalities }
 }
