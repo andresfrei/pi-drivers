@@ -4,7 +4,6 @@ const { Driver, Team } = require('../db')
 // Funcion para crear un driver
 const createDriverService = async (data) => {
   const { teams, ...restOfData } = data
-  console.log(restOfData, teams)
   const driver = await Driver.create(restOfData)
   driver.addTeams(teams)
   return driver
@@ -12,8 +11,14 @@ const createDriverService = async (data) => {
 
 // Funcion para buscar todos los drivers del modelo
 const findAllDriversService = async () => {
-  const drivers = await Driver.findAll()
-  return drivers
+  const drivers = await Driver.findAll({
+    include: {
+      model: Team,
+      attributes: ['name']
+    }
+  }
+  )
+  return drivers.map(driver => formattedDrivers(driver))
 }
 
 // Funcion para buscar drivers en el modelo
@@ -51,7 +56,6 @@ const searchByTeam = async (name) => {
       where: { name }
     }
   })
-
   return drivers.map(driver => formattedDrivers(driver))
 }
 
