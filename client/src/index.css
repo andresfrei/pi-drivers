@@ -1,0 +1,93 @@
+:root {
+  font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: rgb(245, 245, 245);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+html,
+body {
+  height: 100%;
+   margin: 0;
+   padding: 0;
+ }
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 800;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+.m-auto{
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .col {
+    grid-column: span 12;
+    /* En pantallas pequeñas, ocupa toda la anchura */
+  }
+}
+
+.text-center{
+  text-align: center;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.h-100{
+  height: 100%;
+}
+
+.h-full{
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .col {
+    grid-column: span 6;
+    /* En pantallas medianas, ocupa la mitad */
+  }
+}
+
+.hero-gradiant{
+  background-color: 
+  linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%),
+    linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%),
+    linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%),
+    #13111C
+}
