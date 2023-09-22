@@ -1,26 +1,23 @@
 import { useNavigate, useRouteError } from 'react-router-dom'
-import { useRef } from 'react'
+import { ButtonPrimary } from '../components/ui/buttons'
+import { Display1, Title } from '../components/ui/text'
 
 export default function ErrorPage () {
   const error = useRouteError()
   const navigate = useNavigate()
 
-  const defaultFocus = useRef(null)
-
   return (
-    <div className='container' >
-      <div className='row'>
-        <div className='col'>
-          <h1 className='display-1'>{error.status}</h1>
-          <h4 className=''>{error.statusText}</h4>
-          <button
-            onClick={() => navigate(-1)}
-            ref={defaultFocus}
-            label='Volver'
-          />
-       </div>
-      </div>
-    </div>
-
+    <section className='text-center h-full flex flex-column  justify-content-center align-items-center '>
+      <Display1>{error.status}</Display1>
+      <Title> {error.statusText}</Title>
+      <ButtonPrimary
+        autoFocus
+        width='200px'
+        height='55px'
+        onClick={() => navigate(-1)}
+      >
+        Back
+      </ButtonPrimary>
+    </section>
   )
 }

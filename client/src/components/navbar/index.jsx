@@ -1,0 +1,34 @@
+import { Navbar, Nav, NavLink } from '../ui/nav'
+import Logo from '../logo'
+import { Col, Container, Row } from '../ui/layout'
+import { Link } from 'react-router-dom'
+import { APP_URL_ABOUT, APP_URL_HOME, APP_URL_LANDING } from '../../config/constants'
+import useLanguage from '../../hooks/useLanguage'
+
+export default function NavbarComponent () {
+  const { word } = useLanguage('navbar')
+  return (
+    <Navbar>
+      <Container className='w-90'>
+        <Row className='align-items-center'>
+          <Col className='flex justify-content-start'>
+            <Logo height='25px'/>
+          </Col>
+          <Col>
+            <Nav className='flex justify-content-end'>
+              <NavLink>
+                <Link to={APP_URL_HOME} >{word('home')}</Link>
+              </NavLink>
+              <NavLink>
+                <Link to={APP_URL_ABOUT} >{word('about')}</Link>
+              </NavLink>
+              <NavLink>
+                <Link to={APP_URL_LANDING} >{word('exit')}</Link>
+              </NavLink>
+            </Nav>
+          </Col>
+        </Row>
+      </Container>
+    </Navbar>
+  )
+}

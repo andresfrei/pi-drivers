@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  loader: true
+  loader: true,
+  pagination: 9,
+  page: 1,
+  listDrivers: []
 }
 
 const keysSlice = createSlice({

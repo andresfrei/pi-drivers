@@ -4,8 +4,9 @@ import { COLOR_BUTTON_PRIMARY, COLOR_BUTTON_PRIMARY_HOVER, COLOR_BUTTON_SECONDAR
 
 export const ButtonPrimary = styled.button`
   width: ${props => props.width || '100%'};
+  height: ${props => props.height || '100%'};
   padding: 16px 32px;
-  font-size: '1rem';
+  font-size: ${props => props.size || '1rem'};
   font-weight: 400;
   border-radius: ${props => props.radius || '8px'};
   background: ${COLOR_BUTTON_PRIMARY};
@@ -15,6 +16,11 @@ export const ButtonPrimary = styled.button`
   color: white;
   &:hover {
     background: ${COLOR_BUTTON_PRIMARY_HOVER};
+  }
+  &:disabled {
+    background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
   }
 `
 export const ButtonSecondary = styled.button`
@@ -27,6 +33,11 @@ export const ButtonSecondary = styled.button`
   color: black;
   &:hover {
     background: ${COLOR_BUTTON_SECONDARY_HOVER};
+  }
+  &:disabled {
+    background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
   }
 `
 export const ButtonLink = styled.button`
@@ -41,5 +52,10 @@ export const ButtonLink = styled.button`
   &:hover {
     color:white;
     background: ${COLOR_BUTTON_PRIMARY_HOVER};
+  }
+  &:disabled {
+    background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
   }
 `
