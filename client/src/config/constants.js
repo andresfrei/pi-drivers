@@ -27,8 +27,8 @@ export const API_URL_NATIONALITIES = API_URL_BASE + '/nationalities'
 // APP RUTES
 export const APP_URL_LANDING = '/'
 export const APP_URL_HOME = '/home'
-export const APP_URL_DRIVER = '/driver'
-export const APP_URL_CREATE = '/create'
+export const APP_URL_DRIVER = APP_URL_HOME + '/driver'
+export const APP_URL_CREATE = APP_URL_HOME + '/create'
 export const APP_URL_ABOUT = '/about'
 
 export const APP_VIDEO_BACKGRAUND_URL = 'https://youtu.be/YLFVD8xaD3U'
