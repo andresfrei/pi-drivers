@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
 import useDrivers from './useDrivers'
 import useKey from './useKey'
 import { KEY_LIST_DRIVERS, KEY_PAGE, KEY_PAGINATION } from '../config/constants'
+import { useEffect } from 'react'
 
 export default function usePagination () {
   const { drivers } = useDrivers()
@@ -28,7 +28,7 @@ export default function usePagination () {
     const begin = (currentPage - 1) * elementPerPage
     const end = begin + elementPerPage
     setCurrentData(drivers.slice(begin, end))
-  }, [drivers, elementPerPage, currentPage])
+  }, [elementPerPage, currentPage, drivers])
 
   return { next, prev, jump, currentData, currentPage, maxPage, setElementPerPage }
 }

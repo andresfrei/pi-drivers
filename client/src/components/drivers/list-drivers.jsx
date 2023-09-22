@@ -1,22 +1,18 @@
-import useLanguage from '../../hooks/useLanguage'
-// import usePagination from '../../hooks/usePagination'
-
+import usePagination from '../../hooks/usePagination'
 import { Container, Row } from '../ui/layout'
-import { Title } from '../ui/text'
 
-// import Driver from './driver'
+import Driver from './driver'
 
 export default function ListDrivers () {
-  // const { currentData } = usePagination()
-  const { word } = useLanguage('driverslist')
+  const { currentData } = usePagination()
+
   return (
-    <section>
-      <Title>{word('title')}</Title>
-      <Container>
-        <Row>
-          { /* currentData.length && currentData.map(driver => <Driver key={driver.id} />)  */}
-        </Row>
-      </Container>
-    </section>
+    <Container>
+      <Row className='gap-4'>
+        {
+          currentData.map(driver => <Driver key={driver.id} driver={driver} />)
+        }
+      </Row>
+    </Container>
   )
 }

@@ -8,9 +8,16 @@ export const KEY_LOADER = 'loader'
 export const KEY_PAGE = 'page'
 export const KEY_PAGINATION = 'pagination'
 export const KEY_LIST_DRIVERS = 'listDrivers'
+export const KEY_SEARCH = 'searchDrivers'
+export const KEY_FILTER_SEARCH = 'filterSearch'
 
 // Config API_URLS
 const API_URL_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001/api'
+
+//
+export const FILED_NAME = 'name'
+export const FILED_TEAM = 'team'
+export const FILED_NATIONALITY = 'nationality'
 
 export const API_URL_DRIVERS = API_URL_BASE + '/drivers'
 export const API_URL_DRIVERS_SEARCH = API_URL_DRIVERS + '/search'

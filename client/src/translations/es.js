@@ -20,6 +20,9 @@ const dictionary = {
     name: 'nombre',
     team: 'equipo',
     nationality: 'Nacionalidad'
+  },
+  driverslist: {
+    title: 'Listado de Drivers'
   }
 }
 

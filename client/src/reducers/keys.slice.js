@@ -4,7 +4,9 @@ const initialState = {
   loader: true,
   pagination: 9,
   page: 1,
-  listDrivers: []
+  listDrivers: [],
+  searchDrivers: '',
+  filterSearch: false
 }
 
 const keysSlice = createSlice({

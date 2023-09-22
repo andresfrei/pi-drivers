@@ -1,21 +1,24 @@
-import { API_URL_DRIVERS } from '../config/constants'
-
-export const findAllDriversService = async () => {
-  try {
-    const res = await fetch(API_URL_DRIVERS)
-    const data = await res.json()
-    return { resolved: true, payload: data }
-  } catch ({ message }) {
-    return { resolved: false, payload: message }
-  }
-}
+import fetchAPIService from './api.service'
+import { API_URL_DRIVERS, API_URL_DRIVERS_SEARCH } from '../config/constants'
 
 export const findAllDataFromAPI = async () => {
-  try {
-    const res = await fetch(`${API_URL_DRIVERS}?full=true`)
-    const data = await res.json()
-    return { resolved: true, payload: data }
-  } catch ({ message }) {
-    return { resolved: false, payload: message }
-  }
+  return await fetchAPIService(`${API_URL_DRIVERS}?full=true`)
+}
+
+export const findAllDrivers = async () => {
+  const res = await fetchAPIService(API_URL_DRIVERS)
+  if (res.resolved) return { resolved: true, payload: res.payload.drivers }
+  return res
+}
+
+export const findDriversByName = async (name) => {
+  return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?name=${name}`)
+}
+
+export const findDriversByTeam = async (name) => {
+  return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?team=${name}`)
+}
+
+export const findDriversByNationality = async (name) => {
+  return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?nationality=${name}`)
 }

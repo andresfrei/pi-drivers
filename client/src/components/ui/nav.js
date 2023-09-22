@@ -12,7 +12,6 @@ export const Navbar = styled.nav`
  height: 80px;
  background-color: rgb(255, 255, 255);
  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
- z-index: 1;
 `
 
 export const Nav = styled.ul`
