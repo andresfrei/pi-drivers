@@ -1,18 +1,19 @@
-import { Container, Row } from '../ui/layout'
-import { Title } from '../ui/text'
+import { Container, Row } from '../components/ui/layout'
+import { Title } from '../components/ui/text'
 
-import usePagination from '../../hooks/usePagination'
-import useLanguage from '../../hooks/useLanguage'
+import usePagination from '../hooks/usePagination'
+import useLanguage from '../hooks/useLanguage'
 
-import Driver from './driver'
-import Pagination from './pagination'
+import Driver from '../components/driver'
+import Pagination from '../components/pagination'
 
 export default function ListDrivers () {
   const { currentData, maxPage } = usePagination()
   const { word } = useLanguage('driverslist')
+
   return (
     <Container className='flex flex-column gap-3'>
-      <Row>
+      <Row className='my-3'>
         <Title className='text-center w-100'>
           {word('title')}
         </Title>

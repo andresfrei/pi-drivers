@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { APP_URL_DRIVER } from '../../config/constants'
+import { APP_URL_DRIVERS, DRIVER_IMAGE_DEFAULT } from '../../config/constants'
 import { Card, CardImage, CardSubtitle, CardTitle } from '../ui/card'
 
 export default function Driver ({ driver }) {
@@ -14,12 +14,12 @@ export default function Driver ({ driver }) {
       padding= '0'
       scale ='1.02'
       className='pointer'
-      onClick={() => navigate(`${APP_URL_DRIVER}/${id}`)}
+      onClick={() => navigate(`${APP_URL_DRIVERS}/${id}`)}
     >
       <CardImage
         width ='225px'
         height= '225px'
-        src={image}
+        src={image || DRIVER_IMAGE_DEFAULT}
       />
       <CardTitle className='text-center'>
         {`${firstname} ${lastname}`}

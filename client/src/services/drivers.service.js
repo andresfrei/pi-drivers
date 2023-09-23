@@ -11,6 +11,10 @@ export const findAllDrivers = async () => {
   return res
 }
 
+export const findDriverByID = async (id) => {
+  return await fetchAPIService(`${API_URL_DRIVERS}/{id}`)
+}
+
 export const findDriversByName = async (name) => {
   return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?name=${name}`)
 }

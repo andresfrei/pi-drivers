@@ -6,7 +6,9 @@ const dictionary = {
     home: 'Empezar'
   },
   navbar: {
-    home: 'Inicio',
+    drivers: 'Pilotos',
+    teams: 'Equipos',
+    nationalities: 'Nacionalidades',
     about: 'Acerca de',
     exit: 'Salir'
   },
@@ -30,6 +32,10 @@ const dictionary = {
     next: 'siguiente',
     back: 'anterior',
     last: 'ultimo'
+  },
+  driver: {
+    btnback: 'volver',
+    btnwiki: 'mas'
   }
 }
 

@@ -4,8 +4,10 @@ import { ButtonSecondary } from '../ui/buttons'
 import useLanguage from '../../hooks/useLanguage'
 
 export default function Pagination () {
-  const { next, prev, jump, currentPage, maxPage, setElementPerPage } = usePagination()
+  const { next, prev, jump, currentPage, maxPage } = usePagination()
   const { word } = useLanguage('pagination')
+
+  // Genero las opcions segín la cantidad de páginas
   const options = []
   for (let i = 1; i <= maxPage; i++) {
     options.push(

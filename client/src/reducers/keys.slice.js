@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   loader: true,
+  loadData: false,
   pagination: 9,
   page: 1,
   listDrivers: [],

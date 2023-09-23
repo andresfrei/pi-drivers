@@ -5,23 +5,23 @@ import SearchBar from '../search-bar'
 import { ButtonPrimary, ButtonSecondary } from '../ui/buttons'
 import { Card } from '../ui/card'
 
-import { APP_URL_CREATE } from '../../config/constants'
+import { APP_URL_DRIVER_CREATE } from '../../config/constants'
 
 export default function ToolBar () {
   const { word } = useLanguage('toolbar')
   const navigate = useNavigate()
   return (
-    <Card direction ='row' justify='space-around'>
+    <Card direction ='row' justify='space-around' width='1200px'>
         <ButtonSecondary
           width = '150px'
-          onClick={() => navigate(APP_URL_CREATE)}
+          onClick={() => navigate(APP_URL_DRIVER_CREATE)}
         >
           {word('create')}
         </ButtonSecondary>
         <SearchBar width='350px'/>
         <ButtonPrimary
           width = '150px'
-          onClick={() => navigate(APP_URL_CREATE)}
+          onClick={() => navigate(APP_URL_DRIVER_CREATE)}
         >
         {word('more')}
         </ButtonPrimary>
