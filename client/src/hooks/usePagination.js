@@ -11,18 +11,11 @@ export default function usePagination () {
 
   const maxPage = !drivers ? 0 : Math.ceil(drivers.length / elementPerPage)
 
-  function next () {
-    setCurrentPage(currentPage => Math.min(currentPage + 1, maxPage))
-  }
+  const next = () => setCurrentPage(currentPage + 1)
 
-  function prev () {
-    setCurrentPage(currentPage => Math.max(currentPage - 1, 1))
-  }
+  const prev = () => setCurrentPage(currentPage - 1)
 
-  function jump (page) {
-    const pageNumber = Math.max(1, page)
-    setCurrentPage(currentPage => Math.min(pageNumber, maxPage))
-  }
+  const jump = (page) => setCurrentPage(page)
 
   useEffect(() => {
     const begin = (currentPage - 1) * elementPerPage

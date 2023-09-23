@@ -10,6 +10,7 @@ export default function Driver ({ driver }) {
   return (
     <Card
       width ='225px'
+      height ='312.38px'
       padding= '0'
       scale ='1.02'
       className='pointer'
@@ -20,7 +21,7 @@ export default function Driver ({ driver }) {
         height= '225px'
         src={image}
       />
-      <CardTitle>
+      <CardTitle className='text-center'>
         {`${firstname} ${lastname}`}
       </CardTitle>
       <CardSubtitle>

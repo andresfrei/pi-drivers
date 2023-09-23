@@ -11,7 +11,8 @@ const dictionary = {
     exit: 'Salir'
   },
   toolbar: {
-    create: 'crear'
+    create: 'crear',
+    more: 'mas'
   },
   searchbar: {
     search: 'buscar por nombre',
@@ -22,7 +23,13 @@ const dictionary = {
     nationality: 'Nacionalidad'
   },
   driverslist: {
-    title: 'Listado de Drivers'
+    title: 'Listado de pilotos'
+  },
+  pagination: {
+    first: 'primero',
+    next: 'siguiente',
+    back: 'anterior',
+    last: 'ultimo'
   }
 }
 

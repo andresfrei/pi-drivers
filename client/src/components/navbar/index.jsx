@@ -12,7 +12,9 @@ export default function NavbarComponent () {
       <Container className='w-90'>
         <Row className='align-items-center'>
           <Col className='flex justify-content-start'>
-            <Logo height='25px'/>
+            <Link to={APP_URL_HOME}>
+              <Logo height='25px'/>
+            </Link>
           </Col>
           <Col>
             <Nav className='flex justify-content-end'>

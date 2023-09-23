@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import useLoader from './useLoader'
 import useKey from './useKey'
 import { findAllDataFromAPI, findAllDrivers, findDriversByName, findDriversByNationality, findDriversByTeam } from '../services/drivers.service'
-import { FILED_NAME, FILED_NATIONALITY, FILED_TEAM } from '../config/constants'
+import { FILED_NAME, FILED_NATIONALITY, FILED_TEAM, KEY_PAGE } from '../config/constants'
 
 export default function useDrivers () {
   const drivers = useSelector(state => state.drivers)
+  const [currentPage, setCurrentPage] = useKey(KEY_PAGE)
 
   const [teams, setTeams] = useKey('teams')
   const [nationalities, setNationalities] = useKey('nationalities')
@@ -23,7 +24,10 @@ export default function useDrivers () {
 
     const res = await handleService(fnc, value)
 
-    if (res.resolved) dispatch(setDriversSlice(res.payload))
+    if (res.resolved) {
+      dispatch(setDriversSlice(res.payload))
+      currentPage !== 1 && setCurrentPage(1) // vuelvo a la pagina 1 del paginado
+    }
 
     return res
   }

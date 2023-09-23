@@ -6,7 +6,7 @@ import useKey from '../../hooks/useKey'
 import { FILED_NAME, KEY_FILTER_SEARCH, KEY_SEARCH } from '../../config/constants'
 import useDrivers from '../../hooks/useDrivers'
 
-export default function SearchBar () {
+export default function SearchBar ({ width = '300px' }) {
   const { word } = useLanguage('searchbar')
   const [searchValue, setSearchValue] = useKey(KEY_SEARCH)
   const [filterSearch, setFilterSearch] = useKey(KEY_FILTER_SEARCH)
@@ -32,7 +32,7 @@ export default function SearchBar () {
     <div className='flex gap-1'>
       <Input
         autoFocus
-        width='220px'
+        width={width}
         placeholder={word('search')}
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}

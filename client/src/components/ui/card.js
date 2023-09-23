@@ -2,12 +2,9 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  -webkit-box-align: center;
+  flex-direction: ${props => props.direction || 'column'};
+  justify-content: ${props => props.justify || 'space-between'};
   align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
   background-color: rgb(255, 255, 255);
   padding: ${props => props.padding || '24px'};
   width: ${props => props.width || '100%'};
@@ -32,6 +29,9 @@ export const CardImage = styled.img`
   display: block;
   object-fit: cover;
   filter: grayscale(100%);
+  &:hover {
+    filter: none;
+  }
 `
 export const CardTitle = styled.h3`
   font-size: 18px;
