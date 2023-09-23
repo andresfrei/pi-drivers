@@ -23,12 +23,12 @@ export default function Pagination () {
 
       <div className='flex gap-1'>
         <ButtonSecondary
-          width ='120px'
+          width ='125px'
           disabled = {currentPage === 1}
           onClick={() => jump(1)}
         >{word('first')}</ButtonSecondary>
         <ButtonSecondary
-          width ='120px'
+          width ='125px'
           disabled = {currentPage === 1}
           onClick={prev}
         >{word('back')}</ButtonSecondary>
@@ -44,12 +44,12 @@ export default function Pagination () {
 
       <div className='flex gap-1'>
         <ButtonSecondary
-          width ='120px'
+          width ='125px'
           onClick={next}
           disabled = {currentPage === maxPage}
         >{word('next')}</ButtonSecondary>
         <ButtonSecondary
-          width ='120px'
+          width ='125px'
           onClick={() => jump(maxPage)}
           disabled = {currentPage === maxPage}
         >{word('last')}</ButtonSecondary>

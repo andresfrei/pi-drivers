@@ -264,7 +264,7 @@ body {
 }
 
 .page-h-full{
-  min-height: calc(100vh - 196px) ;
+  min-height: calc(100vh - 80px) ;
 }
 
 .driver-page-col{

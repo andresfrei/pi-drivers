@@ -4,6 +4,7 @@ import { Title } from '../components/ui/text'
 import usePagination from '../hooks/usePagination'
 import useLanguage from '../hooks/useLanguage'
 
+import ToolBar from '../components/tool-bar'
 import Driver from '../components/driver'
 import Pagination from '../components/pagination'
 
@@ -14,6 +15,7 @@ export default function ListDrivers () {
   return (
     <Container className='flex flex-column gap-3'>
       <Row className='my-3'>
+        <ToolBar/>
         <Title className='text-center w-100'>
           {word('title')}
         </Title>

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { ButtonPrimary } from '../components/ui/buttons'
 
-import { Container, Row, Col } from '../components/ui/layout'
+import { Container, Row } from '../components/ui/layout'
 import { Display1, Display3 } from '../components/ui/text'
 
 import useLanguage from '../hooks/useLanguage'
@@ -20,13 +20,13 @@ export default function LandingPage () {
 
   return (
     <Container >
-      <Row className='justify-content-center align-items-center h-full'>
-        <Col className='text-center'>
+      <Row className='flex flex-column justify-content-center align-items-center h-full gap-4'>
+        <div className='flex flex-column justify-content-center align-items-center'>
           <Display1>{word('title')}</Display1>
           <Display3 >{word('welcome')}</Display3>
-        </Col>
-        <Col className='flex flex-column align-items-center   text-center gap-2'>
           <Logo height='50px'/>
+        </div>
+        <div className='mt-5'>
           <ButtonPrimary
             radius='100px'
             width='350px'
@@ -35,7 +35,7 @@ export default function LandingPage () {
           >
             {word('home')}
           </ButtonPrimary>
-        </Col>
+        </div>
       </Row>
   </Container>
   )

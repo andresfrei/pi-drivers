@@ -1,7 +1,7 @@
 const dictionary = {
   landingPage: {
     title: '¡Hola!',
-    welcome: 'Bienvenido',
+    welcome: 'Bienvenido a',
     by: 'Por Andrés Frei',
     home: 'Empezar'
   },

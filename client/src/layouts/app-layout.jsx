@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/navbar'
-import ToolBar from '../components/tool-bar'
 import useLoadData from '../hooks/useLoadData'
 import { useEffect } from 'react'
 import Loader from '../components/loader'
@@ -17,7 +16,6 @@ export default function AppLayout () {
     <>
       <header className='flex flex-column gap-2 align-items-center'>
         <Navbar/>
-        <ToolBar/>
       </header>
       <Outlet/>
     </>
