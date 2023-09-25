@@ -1,25 +1,45 @@
 const dictionary = {
   landingPage: {
     title: '¡Hola!',
-    welcome: 'Bienvenido',
+    welcome: 'Bienvenido a',
     by: 'Por Andrés Frei',
     home: 'Empezar'
   },
   navbar: {
-    home: 'Inicio',
+    drivers: 'Pilotos',
+    teams: 'Equipos',
+    nationalities: 'Nacionalidades',
     about: 'Acerca de',
     exit: 'Salir'
   },
   toolbar: {
-    create: 'crear'
+    create: 'crear',
+    more: 'opciones'
   },
   searchbar: {
-    search: 'buscar por nombre',
+    search: 'ingrese',
     btnsearch: 'buscar',
     btnclear: 'quitar',
     name: 'nombre',
     team: 'equipo',
-    nationality: 'Nacionalidad'
+    nationality: 'nacionalidad'
+  },
+  driverslist: {
+    title: 'Listado de pilotos'
+  },
+  teamslist: {
+    title: 'Listado de Equipos',
+    searchPlaceholder: 'Buscar por nombre'
+  },
+  pagination: {
+    first: 'primero',
+    next: 'siguiente',
+    back: 'anterior',
+    last: 'ultimo'
+  },
+  driver: {
+    btnback: 'volver',
+    btnwiki: 'mas'
   }
 }
 

@@ -30,6 +30,11 @@ export const SelectInput = styled.select`
   cursor: pointer;
   color: black;
   width: ${props => props.width || '100%'};
+  &:disabled {
+    background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
+  }
 `
 export const Option = styled.option`
   padding-top: 25px;

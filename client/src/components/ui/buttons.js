@@ -5,7 +5,7 @@ import { COLOR_BUTTON_PRIMARY, COLOR_BUTTON_PRIMARY_HOVER, COLOR_BUTTON_SECONDAR
 export const ButtonPrimary = styled.button`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
-  padding: 16px 32px;
+  padding: ${props => props.height || '16px 32px'};
   font-size: ${props => props.size || '1rem'};
   font-weight: 400;
   border-radius: ${props => props.radius || '8px'};
@@ -24,10 +24,16 @@ export const ButtonPrimary = styled.button`
   }
 `
 export const ButtonSecondary = styled.button`
-  width: ${props => props.width || '30%'};
-  height: 41px;
-  border-radius: 60px;
+  width: ${props => props.width || '100%'};
+  height: ${props => props.height || '100%'};
+  border-radius: ${props => props.radius || '8px'};
+  padding: ${props => props.height || '16px 32px'};
+  font-size: ${props => props.size || '1rem'};
+  font-weight: 400;
+  border-color:grey;
   background: ${COLOR_BUTTON_SECONDARY};
+  border: 1px solid rgb(0, 0, 0);
+  text-align:center;
   cursor: pointer;
   transition: 0.4s ease;
   color: black;
@@ -43,7 +49,7 @@ export const ButtonSecondary = styled.button`
 export const ButtonLink = styled.button`
   width: ${props => props.width || '100%'};
   height: 42px;
-  border: 1px solid rgba(0, 0, 0, 0.73);
+  border: none;
   border-radius: 15px;
   background-color: transparent;
   cursor: pointer;
@@ -55,6 +61,19 @@ export const ButtonLink = styled.button`
   }
   &:disabled {
     background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
+  }
+`
+export const ButtonPaginate = styled.button`
+  width: ${props => props.width || '100%'};
+  height: ${props => props.height || '100%'};
+  color:black;
+  background-color:white;
+  border: 1px solid rgba(0, 0, 0, 0.53);
+  border-radius: 5px;
+  &:disabled {
+    background-color: #a8a7a7; 
     color: #666;            
     cursor: not-allowed;    
   }

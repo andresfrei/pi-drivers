@@ -1,16 +1,29 @@
 import { Container, Row } from '../components/ui/layout'
-import ToolBar from '../components/tool-bar'
-import ListDrivers from '../components/drivers/list-drivers'
 
-export default function HomePage () {
+import usePagination from '../hooks/usePagination'
+
+import ToolBar from '../components/tool-bar'
+import Driver from '../components/driver'
+import Pagination from '../components/pagination'
+
+export default function ListDrivers () {
+  const { currentData, maxPage } = usePagination()
+
   return (
-    <Container>
-      <Row className='my-4'>
+    <Container className='flex flex-column gap-3'>
+      <Row className='flex my-3 '>
         <ToolBar/>
       </Row>
-      <Row>
-        <ListDrivers/>
+      <Row className='flex justify-content-center gap-4'>
+        {
+          currentData.map(driver => <Driver key={driver.id} driver={driver} />)
+        }
       </Row>
+      { !!currentData.length && maxPage > 1 &&
+      <Row>
+        <Pagination/>
+      </Row>
+      }
     </Container>
   )
 }
