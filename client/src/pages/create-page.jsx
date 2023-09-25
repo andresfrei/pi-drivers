@@ -1,3 +1,4 @@
+import { ButtonPrimary, ButtonSecondary } from '../components/ui/buttons'
 import { Card, CardImage } from '../components/ui/card'
 import { Input, SelectInput, Option, TextArea } from '../components/ui/inputs'
 import { Col, Container, Row } from '../components/ui/layout'
@@ -81,10 +82,13 @@ export default function CreatePage () {
                     width='380px'
                     options={teams.map(team => team.name)}
                     />
+                    <div className='flex'>
+                      <ButtonPrimary>Guardar</ButtonPrimary>
+                      <ButtonSecondary>Cancelar</ButtonSecondary>
+                    </div>
                 </Col>
               </Row>
             </Container>
-
           </Card>
         </Col>
       </Row>
