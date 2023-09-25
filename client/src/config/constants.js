@@ -41,3 +41,15 @@ export const APP_URL_HOME = '/home'
 export const APP_URL_CREATE = APP_URL_HOME + '/create'
 
 export const DRIVER_IMAGE_DEFAULT = 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Ricardo_Rosset_at_1997_Australian_Grand_Prix.jpg'
+
+// Inicial State
+export const INICIAL_CREATED = {
+  firstname: '',
+  lastname: '',
+  description: '',
+  image: '',
+  nationality: '',
+  birth: '',
+  wiki: '',
+  teams: []
+}

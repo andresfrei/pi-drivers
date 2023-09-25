@@ -73,14 +73,16 @@ export default function DriverPage () {
                   }
                 </div>
               </Col>
-              <Col className='flex driver-col justify-content-center '>
-                <ButtonSecondary
-                  disabled ={!wiki}
-                  onClick={() => window.open(wiki.replace('/en.', '/es.'), '_blank')}
-                >{word('btnwiki')}</ButtonSecondary>
-                <ButtonPrimary
-                  onClick={() => navigate(-1)}
-                >{word('btnback')}</ButtonPrimary>
+              <Col className='flex driver-col justify-content-center align-items-end'>
+                <div className='flex w-100 driver-buttons'>
+                  <ButtonSecondary
+                    disabled ={!wiki}
+                    onClick={() => window.open(wiki.replace('/en.', '/es.'), '_blank')}
+                  >{word('btnwiki')}</ButtonSecondary>
+                  <ButtonPrimary
+                    onClick={() => navigate(-1)}
+                  >{word('btnback')}</ButtonPrimary>
+               </div>
               </Col>
           </Row>
         </Card>
