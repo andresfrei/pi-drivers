@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  width: 100%;
+  width: ${props => props.width || '100%'};
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;

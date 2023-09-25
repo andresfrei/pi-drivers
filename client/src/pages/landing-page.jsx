@@ -19,7 +19,7 @@ export default function LandingPage () {
   useEffect(() => clearState(), [])
 
   return (
-    <Container >
+    <Container>
       <Row className='flex flex-column justify-content-center align-items-center h-full gap-4'>
         <div className='flex flex-column justify-content-center align-items-center'>
           <Display1>{word('title')}</Display1>

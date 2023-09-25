@@ -1,4 +1,5 @@
 :root {
+  position: relative;
   font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -27,14 +28,14 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 800;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 8000;
 }
 
 .justify-content-start{
@@ -279,6 +280,15 @@ body {
   margin: 0;
 }
 
+.driver-page-natonality{
+  background-color: #ECECEC;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 .driver-page-description{
   width: 380px;
   height: 270px;
@@ -287,11 +297,28 @@ body {
   box-sizing: border-box;
 }
 
+.driver-col{
+  display: flex;
+  width: 380px;
+}
+
 .driver-page-team{
-  display: block;
   background-color: #ECECEC;
   padding: 5px 10px;
   border-radius: 8px;
   margin: 0;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.wrap{
+  flex-wrap: wrap;
 }

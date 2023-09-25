@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
+  position: static;
   display: flex;
   flex-direction: ${props => props.direction || 'column'};
   justify-content: ${props => props.justify || 'space-between'};
@@ -18,6 +19,7 @@ export const Card = styled.div`
 `
 
 export const CardImage = styled.img`
+  position: static;
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
   border-top-left-radius: 8px;

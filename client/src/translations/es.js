@@ -14,18 +14,22 @@ const dictionary = {
   },
   toolbar: {
     create: 'crear',
-    more: 'mas'
+    more: 'opciones'
   },
   searchbar: {
-    search: 'buscar por nombre',
+    search: 'ingrese',
     btnsearch: 'buscar',
     btnclear: 'quitar',
     name: 'nombre',
     team: 'equipo',
-    nationality: 'Nacionalidad'
+    nationality: 'nacionalidad'
   },
   driverslist: {
     title: 'Listado de pilotos'
+  },
+  teamslist: {
+    title: 'Listado de Equipos',
+    searchPlaceholder: 'Buscar por nombre'
   },
   pagination: {
     first: 'primero',

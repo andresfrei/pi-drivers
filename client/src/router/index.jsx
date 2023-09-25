@@ -6,7 +6,7 @@ import AppLayout from '../layouts/app-layout'
 import LandingPage from '../pages/landing-page'
 import AboutPage from '../pages/about-page'
 
-import DriversPage from '../pages/drivers-page'
+import HomePage from '../pages/home-page'
 import DriverPage from '../pages/driver-page'
 
 import ErrorPage from '../pages/error-page'
@@ -20,11 +20,11 @@ const router = createBrowserRouter([
       { path: '/', element: <LandingPage /> },
       { path: '/about', element: <AboutPage /> },
       {
-        path: '/app',
+        path: '/home',
         element: <AppLayout />,
         children: [
-          { path: '/app/drivers', element: <DriversPage/> },
-          { path: '/app/drivers/:id', element: <DriverPage/> }
+          { path: '/home', element: <HomePage/> },
+          { path: '/home/:id', element: <DriverPage/> }
         ]
       }
     ]

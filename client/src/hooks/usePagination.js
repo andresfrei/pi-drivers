@@ -1,15 +1,18 @@
 import useDrivers from './useDrivers'
 import useKey from './useKey'
-import { KEY_LIST_DRIVERS, KEY_PAGE, KEY_PAGINATION } from '../config/constants'
+import { KEY_PAGINATION_CURRENT_DATA, KEY_PAGINATION_CURRENT_PAGE, KEY_PAGINATION_ITEMS, KEY_SEARCH_HAS_FILTER } from '../config/constants'
 import { useEffect } from 'react'
 
 export default function usePagination () {
-  const { drivers } = useDrivers()
-  const [elementPerPage, setElementPerPage] = useKey(KEY_PAGINATION)
-  const [currentPage, setCurrentPage] = useKey(KEY_PAGE)
-  const [currentData, setCurrentData] = useKey(KEY_LIST_DRIVERS)
+  const { showDrivers } = useDrivers()
 
-  const maxPage = !drivers ? 0 : Math.ceil(drivers.length / elementPerPage)
+  const [elementPerPage, setElementPerPage] = useKey(KEY_PAGINATION_ITEMS)
+  const [currentPage, setCurrentPage] = useKey(KEY_PAGINATION_CURRENT_PAGE)
+  const [currentData, setCurrentData] = useKey(KEY_PAGINATION_CURRENT_DATA)
+
+  const [hasFilter] = useKey(KEY_SEARCH_HAS_FILTER)
+
+  const maxPage = !showDrivers ? 0 : Math.ceil(showDrivers.length / elementPerPage)
 
   const next = () => setCurrentPage(currentPage + 1)
 
@@ -20,8 +23,8 @@ export default function usePagination () {
   useEffect(() => {
     const begin = (currentPage - 1) * elementPerPage
     const end = begin + elementPerPage
-    setCurrentData(drivers.slice(begin, end))
-  }, [elementPerPage, currentPage, drivers])
+    setCurrentData(showDrivers.slice(begin, end))
+  }, [elementPerPage, currentPage, hasFilter])
 
   return { next, prev, jump, currentData, currentPage, maxPage, setElementPerPage }
 }

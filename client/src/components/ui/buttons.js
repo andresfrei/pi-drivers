@@ -49,7 +49,7 @@ export const ButtonSecondary = styled.button`
 export const ButtonLink = styled.button`
   width: ${props => props.width || '100%'};
   height: 42px;
-  border: 1px solid rgba(0, 0, 0, 0.73);
+  border: none;
   border-radius: 15px;
   background-color: transparent;
   cursor: pointer;

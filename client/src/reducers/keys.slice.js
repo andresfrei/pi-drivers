@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { FILED_NAME } from '../config/constants'
 
 const initialState = {
   loader: true,
-  loadData: false,
-  pagination: 9,
-  page: 1,
-  listDrivers: [],
-  searchDrivers: '',
-  filterSearch: false
+  hasLoad: false,
+  paginationItems: 9,
+  paginationCurrentPage: 1,
+  paginationCurrentData: [],
+  searchField: FILED_NAME,
+  searchValue: '',
+  seatchHasFilter: false
 }
 
 const keysSlice = createSlice({
