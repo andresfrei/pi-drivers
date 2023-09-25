@@ -15,7 +15,7 @@ export default function useFilter () {
   const handleClear = () => {
     setSearchValue('')
     setCurrentPage(1) // Vuelvo a la página 1
-    setHasFilter(true)
+    setHasFilter(false)
   }
 
   return {
