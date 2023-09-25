@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import { ButtonPrimary, ButtonSecondary } from '../components/ui/buttons'
 import { Card, CardImage } from '../components/ui/card'
 import { Input, SelectInput, Option, TextArea } from '../components/ui/inputs'
 import { Col, Container, Row } from '../components/ui/layout'
 import MultiSelect from '../components/ui/multyselect'
 import { Title } from '../components/ui/text'
-import { DRIVER_IMAGE_DEFAULT, INICIAL_CREATED, KEY_NATIONALITIES, KEY_TEAMS } from '../config/constants'
+import { APP_URL_HOME, DRIVER_IMAGE_DEFAULT, INICIAL_CREATED, KEY_NATIONALITIES, KEY_TEAMS } from '../config/constants'
 import useForm from '../hooks/useForm'
 import useKey from '../hooks/useKey'
 import useLanguage from '../hooks/useLanguage'
@@ -12,6 +13,8 @@ import useLanguage from '../hooks/useLanguage'
 export default function CreatePage () {
   const { values, handleChange, handleAddSelected } = useForm(INICIAL_CREATED)
   const { word } = useLanguage('createdpage')
+
+  const navigate = useNavigate()
 
   const [nationalities] = useKey(KEY_NATIONALITIES)
   const [teams] = useKey(KEY_TEAMS)
@@ -83,8 +86,11 @@ export default function CreatePage () {
                     options={teams.map(team => team.name)}
                     />
                     <div className='flex'>
-                      <ButtonPrimary>Guardar</ButtonPrimary>
-                      <ButtonSecondary>Cancelar</ButtonSecondary>
+                      <ButtonPrimary
+                      >{word('btnSave')}</ButtonPrimary>
+                      <ButtonSecondary
+                        onClick={() => navigate(APP_URL_HOME)}
+                      >{word('btnCancel')}</ButtonSecondary>
                     </div>
                 </Col>
               </Row>

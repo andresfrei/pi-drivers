@@ -50,7 +50,9 @@ const dictionary = {
     nationality: 'nacionalidad',
     birth: 'nacimiento',
     wiki: 'url wikipedia',
-    teams: 'equipos (separados por coma)'
+    teams: 'equipos (separados por coma)',
+    btnSave: 'guardar',
+    btnCancel: 'cancelar'
   }
 }
 
