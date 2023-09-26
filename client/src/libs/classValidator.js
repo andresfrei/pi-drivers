@@ -109,6 +109,13 @@ class Validator {
     return res
   }
 
+  isLongMax (key, long) {
+    const isText = typeof this.values[key] === 'string'
+    const res = isText && this.values[key].length <= long
+    !res && this._addError(key, `Maximun length of ${long} characters`)
+    return res
+  }
+
   isPasswordSecure (key) {
     this.filds.add(key)
     const regex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{5,}$/

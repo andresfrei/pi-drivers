@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for pi-drivers-server on 2023-09-26T17:00:05-03:00
+# fly.toml app configuration file generated for pi-json on 2023-09-26T13:50:16-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "pi-drivers-server"
+app = "pi-json"
 primary_region = "eze"
 
 [build]
 
 [http_service]
-  internal_port = 3001
+  internal_port = 5000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
