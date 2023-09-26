@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import useLoader from './useLoader'
 import useKey from './useKey'
 
-import { findAllDrivers, findDriversByName, findDriversByNationality, findDriversByTeam } from '../services/drivers.service'
+import { createDriverService, findAllDrivers, findDriversByName, findDriversByNationality, findDriversByTeam } from '../services/drivers.service'
 import { filterByName, filterByNationality, filterByTeam } from '../libs/filters'
 
 import { FILED_NAME, FILED_NATIONALITY, FILED_TEAM, KEY_PAGINATION_CURRENT_PAGE, KEY_SEARCH_FIELD, KEY_SEARCH_HAS_FILTER, KEY_SEARCH_VALUE } from '../config/constants'
@@ -49,5 +49,14 @@ export default function useDrivers () {
 
   const showDrivers = filterDrivers()
 
-  return { drivers, setDrivers, loadDrivers, showDrivers }
+  const createDriver = async (data) => {
+    const res = await handleService(createDriverService, data)
+
+    // Si Salio bien agrego al estado
+    if (res.resolved) dispatch(setDriversSlice([...drivers, res.payload]))
+
+    return res
+  }
+
+  return { drivers, setDrivers, loadDrivers, showDrivers, createDriver }
 }

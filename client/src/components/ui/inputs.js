@@ -3,21 +3,40 @@ import styled from 'styled-components'
 export const Input = styled.input`
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
-  width: 100%;
   border-radius: 6px;
   writing-mode: horizontal-tb !important;
   background-color: white;
   cursor: text;
   color: black;
-  width: ${props => props.width || '100%'};
   &:disabled {
     background-color: #ccc; 
     color: #666;            
     cursor: not-allowed;    
   }
 `
+
+export const TextArea = styled.textarea`
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
+  padding: 8px;
+  border-radius: 6px;
+  writing-mode: horizontal-tb !important;
+  background-color: white;
+  height: ${props => props.height || '100%'};
+  cursor: text;
+  color: black;
+  &:disabled {
+    background-color: #ccc; 
+    color: ${props => (props.isError ? 'red' : '#666')} ;            
+    cursor: not-allowed;    
+  }
+`
+
 export const SelectInput = styled.select`
   font-size: 18px;
   font-weight: bold;
@@ -29,7 +48,6 @@ export const SelectInput = styled.select`
   background-color: white;
   cursor: pointer;
   color: black;
-  width: ${props => props.width || '100%'};
   &:disabled {
     background-color: #ccc; 
     color: #666;            

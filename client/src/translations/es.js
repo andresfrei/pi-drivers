@@ -40,6 +40,19 @@ const dictionary = {
   driver: {
     btnback: 'volver',
     btnwiki: 'mas'
+  },
+  createdpage: {
+    title: 'Crear un piloto',
+    firstname: 'nombre',
+    lastname: 'apellido',
+    description: 'descripcion',
+    image: 'url imagen',
+    nationality: 'nacionalidad',
+    birth: 'nacimiento',
+    wiki: 'url wikipedia',
+    teams: 'equipos (separados por coma)',
+    btnSave: 'guardar',
+    btnCancel: 'cancelar'
   }
 }
 
