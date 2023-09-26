@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const Input = styled.input`
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
   border-radius: 6px;
   writing-mode: horizontal-tb !important;
@@ -20,7 +21,8 @@ export const Input = styled.input`
 export const TextArea = styled.textarea`
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
   border-radius: 6px;
   writing-mode: horizontal-tb !important;
@@ -30,7 +32,7 @@ export const TextArea = styled.textarea`
   color: black;
   &:disabled {
     background-color: #ccc; 
-    color: #666;            
+    color: ${props => (props.isError ? 'red' : '#666')} ;            
     cursor: not-allowed;    
   }
 `

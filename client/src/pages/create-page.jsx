@@ -1,23 +1,40 @@
 import { useNavigate } from 'react-router-dom'
-import { ButtonPrimary, ButtonSecondary } from '../components/ui/buttons'
+
 import { Card, CardImage } from '../components/ui/card'
-import { Input, SelectInput, Option, TextArea } from '../components/ui/inputs'
 import { Col, Container, Row } from '../components/ui/layout'
 import MultiSelect from '../components/ui/multyselect'
 import { Title } from '../components/ui/text'
+
+import { ButtonPrimary, ButtonSecondary } from '../components/ui/buttons'
+import { Input, SelectInput, Option, TextArea } from '../components/ui/inputs'
+
 import { APP_URL_HOME, DRIVER_IMAGE_DEFAULT, INICIAL_CREATED, KEY_NATIONALITIES, KEY_TEAMS } from '../config/constants'
+
 import useForm from '../hooks/useForm'
 import useKey from '../hooks/useKey'
 import useLanguage from '../hooks/useLanguage'
+import useDrivers from '../hooks/useDrivers'
+
+import { validateNewDriver } from '../validator/drivers.validator'
 
 export default function CreatePage () {
-  const { values, handleChange, handleAddSelected } = useForm(INICIAL_CREATED)
   const { word } = useLanguage('createdpage')
-
   const navigate = useNavigate()
-
   const [nationalities] = useKey(KEY_NATIONALITIES)
   const [teams] = useKey(KEY_TEAMS)
+
+  const { createDriver } = useDrivers()
+
+  const {
+    values,
+    handleChange,
+    handleAddSelected,
+    handleSubmit,
+    errors
+  } = useForm({
+    initialValues: INICIAL_CREATED,
+    validate: validateNewDriver
+  })
 
   const handleSelect = (value) => handleAddSelected('teams', value)
 
@@ -43,26 +60,33 @@ export default function CreatePage () {
                     placeholder={word('firstname')}
                     value={values.firstname}
                     onChange={handleChange}
+                    isError = {!!errors.firstname}
                   />
                   <Input
                     name='lastname'
                     placeholder={word('lastname')}
                     value={values.lastname}
                     onChange={handleChange}
+                    isError = {!!errors.lastname}
                   />
                   <TextArea
                     name='description'
                     placeholder={word('description')}
                     value={values.description}
                     onChange={handleChange}
+                    isError = {!!errors.description}
                   />
                   <Input
                     name='image'
                     placeholder={word('image')}
                     value={values.image}
                     onChange={handleChange}
+                    isError = {!!errors.image}
                   />
-                  <SelectInput>
+                  <SelectInput
+                    value={values.nationality}
+                    isError = {!!errors.nationality}
+                  >
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }
                   </SelectInput>
                   <Input
@@ -71,12 +95,14 @@ export default function CreatePage () {
                     placeholder={word('birth')}
                     value={values.birth}
                     onChange={handleChange}
+                    isError = {!!errors.birth}
                   />
                   <Input
                     name='wiki'
                     placeholder={word('wiki')}
                     value={values.wiki}
                     onChange={handleChange}
+                    isError = {!!errors.wiki}
                   />
                   <MultiSelect
                     selectedOptions={values.teams}
@@ -84,9 +110,11 @@ export default function CreatePage () {
                     title='Equipos'
                     width='380px'
                     options={teams.map(team => team.name)}
+                    isError = {!!errors.teams}
                     />
                     <div className='flex'>
                       <ButtonPrimary
+                        onClick={() => handleSubmit(createDriver)}
                       >{word('btnSave')}</ButtonPrimary>
                       <ButtonSecondary
                         onClick={() => navigate(APP_URL_HOME)}

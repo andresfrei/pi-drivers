@@ -26,3 +26,7 @@ export const findDriversByTeam = async (name) => {
 export const findDriversByNationality = async (name) => {
   return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?nationality=${name}`)
 }
+
+export const createDriverService = async (name) => {
+  return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?nationality=${name}`)
+}

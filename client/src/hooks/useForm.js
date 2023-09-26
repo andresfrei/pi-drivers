@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
-export default function useForm (initialValues) {
+export default function useForm ({ initialValues, validate }) {
   const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState({})
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -21,12 +22,24 @@ export default function useForm (initialValues) {
     })
   }
 
+  // Recibe como parametro la funcion a ejecutar
+  const handleSubmit = async (fnc) => {
+    const res = validate(values)
+    if (!res.resolved) {
+      setErrors(res.errors)
+      return res
+    }
+    return await fnc(values)
+  }
+
   const handleClear = () => setValues(initialValues)
 
   return {
     values,
     handleChange,
     handleClear,
-    handleAddSelected
+    handleAddSelected,
+    handleSubmit,
+    errors
   }
 }
