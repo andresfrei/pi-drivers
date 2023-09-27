@@ -1,10 +1,12 @@
-import { useNavigate, useRouteError } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ButtonPrimary } from '../components/ui/buttons'
 import { Display1, Title } from '../components/ui/text'
+import useKey from '../hooks/useKey'
+import { KEY_ERROR } from '../config/constants'
 import { Container } from '../components/ui/layout'
 
 export default function ErrorPage () {
-  const error = useRouteError()
+  const [error] = useKey(KEY_ERROR)
   const navigate = useNavigate()
 
   return (
@@ -16,7 +18,7 @@ export default function ErrorPage () {
       <ButtonPrimary
         width='300px'
         autoFocus
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(error.url)}
       >
         Back
       </ButtonPrimary>

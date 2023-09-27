@@ -6,6 +6,7 @@ export const APP_KEY_LANGUAGE = 'APP_KEY_LANGUAGE'
 // Keys del estado global
 export const KEY_LOADER = 'loader'
 export const KEY_HAS_LOAD = 'hasLoad'
+export const KEY_ERROR = 'globalError'
 
 // Cantidad de paginacion
 export const KEY_PAGINATION_ITEMS = 'paginationItems'
@@ -21,9 +22,9 @@ export const KEY_SEARCH_FIELD = 'searchField'
 export const KEY_SEARCH_VALUE = 'searchValue'
 
 // Config API_URLS
-const API_URL_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001/api'
+const API_URL_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
-//
+// Fields
 export const FILED_NAME = 'name'
 export const FILED_TEAM = 'team'
 export const FILED_NATIONALITY = 'nationality'
@@ -36,6 +37,7 @@ export const API_URL_NATIONALITIES = API_URL_BASE + '/nationalities'
 // APP RUTES
 export const APP_URL_LANDING = '/'
 export const APP_URL_ABOUT = '/about'
+export const APP_URL_ERROR = '/error'
 
 export const APP_URL_HOME = '/home'
 export const APP_URL_CREATE = APP_URL_HOME + '/create'

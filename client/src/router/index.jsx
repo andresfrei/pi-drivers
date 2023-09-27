@@ -11,6 +11,7 @@ import DriverPage from '../pages/driver-page'
 import CreatePage from '../pages/create-page'
 
 import ErrorPage from '../pages/error-page'
+import CustomErrorPage from '../pages/custom-error-page'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <LandingPage /> },
       { path: '/about', element: <AboutPage /> },
+      { path: '/error', element: <CustomErrorPage /> },
       {
         path: '/home',
         element: <AppLayout />,
