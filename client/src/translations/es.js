@@ -53,6 +53,9 @@ const dictionary = {
     teams: 'equipos (separados por coma)',
     btnSave: 'guardar',
     btnCancel: 'cancelar'
+  },
+  errors: {
+    api: 'UPS! Parece que hubo un error con la API. Intntente nuvalemnte'
   }
 }
 

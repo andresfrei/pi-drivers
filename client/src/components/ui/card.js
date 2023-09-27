@@ -48,3 +48,8 @@ export const CardSubtitle = styled.h5`
   color: #888;
   margin-bottom: 1rem;
 `
+
+export const CardGroup = styled.div`
+  display:flex;
+  gap:1rem;
+`

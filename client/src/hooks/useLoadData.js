@@ -31,5 +31,5 @@ export default function useLoadData () {
     setHasLoad(false)
   }
 
-  return { hasLoad, dataUpload, teams, nationalities, clearState }
+  return { hasLoad, dataUpload, teams, nationalities, clearState, setHasLoad }
 }
