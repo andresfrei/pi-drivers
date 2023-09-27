@@ -21,7 +21,7 @@ export const KEY_SEARCH_FIELD = 'searchField'
 export const KEY_SEARCH_VALUE = 'searchValue'
 
 // Config API_URLS
-const API_URL_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001/api'
+const API_URL_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
 //
 export const FILED_NAME = 'name'
