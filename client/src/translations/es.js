@@ -56,6 +56,14 @@ const dictionary = {
   },
   errors: {
     api: 'UPS! Parece que hubo un error con la API. Intntente nuvalemnte'
+  },
+  about: {
+    about: 'Acerca de',
+    back: 'Vovler',
+    text: `Drivers PI es parte del curso FullStack de Henry, particularmente el proyecto individual.
+Permite traer todos los pilotos de una API pública, pero tambien agregar nuestros propios pilotos y almacenarlos en una base de datos PosgresSQL.
+No podíamos usar otra librería que las detalladas en el requerimiento.
+`
   }
 }
 

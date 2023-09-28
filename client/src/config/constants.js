@@ -55,3 +55,7 @@ export const INICIAL_CREATED = {
   wiki: '',
   teams: []
 }
+
+export const DEV_AVATAR = 'https://media.licdn.com/dms/image/C4E03AQHUFU9CIwzXZg/profile-displayphoto-shrink_200_200/0/1610106662578?e=1701302400&v=beta&t=jCKkvXuc5Rx8g-zGKL5xFA1MIhyeHGQc6DJ4ZPGtokw'
+export const DEV_GITHUB = 'https://github.com/andresfrei/pi-drivers'
+export const DEV_LINKEDIN = 'https://www.linkedin.com/in/andresfrei'

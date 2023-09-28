@@ -336,3 +336,18 @@ body {
 .wrap{
   flex-wrap: wrap;
 }
+
+.rounded{
+  border-radius: 50% !important;
+}
+.image-disabled{
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+button {
+  transition: opacity 0.2s ease;
+  &:active {
+      opacity: 0.2;
+  }
+}

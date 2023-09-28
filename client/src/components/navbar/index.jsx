@@ -1,9 +1,9 @@
 import { Navbar } from '../ui/nav'
 import Logo from '../logo'
 import { Col, Container, Row } from '../ui/layout'
-import { Link, useNavigate } from 'react-router-dom'
-import { APP_URL_HOME, APP_URL_LANDING } from '../../config/constants'
-import { ButtonPrimary } from '../ui/buttons'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { APP_URL_ABOUT, APP_URL_HOME, APP_URL_LANDING } from '../../config/constants'
+import { ButtonPrimary, ButtonSecondary } from '../ui/buttons'
 import useLanguage from '../../hooks/useLanguage'
 import useLoadData from '../../hooks/useLoadData'
 
@@ -11,6 +11,10 @@ export default function NavbarComponent () {
   const navigate = useNavigate()
   const { word } = useLanguage('navbar')
   const { clearState } = useLoadData()
+
+  const { pathname } = useLocation()
+
+  const hidden = pathname !== APP_URL_HOME
 
   const handleClose = () => {
     clearState()
@@ -27,8 +31,14 @@ export default function NavbarComponent () {
             </Link>
           </Col>
           <Col className='flex justify-content-end'>
+            <ButtonSecondary
+              width = '150px'
+              hidden = {hidden}
+              onClick={() => navigate(APP_URL_ABOUT)}
+            >{word('about')}</ButtonSecondary>
             <ButtonPrimary
               width = '150px'
+              hidden = {hidden}
               onClick={handleClose}
             >{word('exit')}</ButtonPrimary>
           </Col>
