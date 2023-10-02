@@ -27,6 +27,11 @@ export const findDriversByNationality = async (name) => {
   return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?nationality=${name}`)
 }
 
-export const createDriverService = async (name) => {
-  return await fetchAPIService(`${API_URL_DRIVERS_SEARCH}?nationality=${name}`)
+export const createDriverService = async (data) => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }
+  return await fetchAPIService(API_URL_DRIVERS, options)
 }

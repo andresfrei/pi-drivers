@@ -5,6 +5,7 @@ export const Input = styled.input`
   font-weight: bold;
   border: 1px solid;
   border-color: ${props => (props.isError ? 'red' : '#666')};
+  width: ${props => props.width || '100%'};
   padding: 8px;
   border-radius: 6px;
   writing-mode: horizontal-tb !important;

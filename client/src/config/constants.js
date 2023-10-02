@@ -17,9 +17,14 @@ export const KEY_PAGINATION_CURRENT_DATA = 'paginationCurrentData'
 export const KEY_TEAMS = 'teams'
 export const KEY_NATIONALITIES = 'nationalities'
 
+export const KEY_FILTER_ORIGIN = 'filterOrigin'
+
 export const KEY_SEARCH_HAS_FILTER = 'seatchHasFilter'
 export const KEY_SEARCH_FIELD = 'searchField'
 export const KEY_SEARCH_VALUE = 'searchValue'
+
+export const KEY_ORDER_FIELD = 'orderField'
+export const KEY_ORDER_ASC = 'orderAsc'
 
 // Config API_URLS
 const API_URL_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
@@ -28,6 +33,10 @@ const API_URL_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 export const FILED_NAME = 'name'
 export const FILED_TEAM = 'team'
 export const FILED_NATIONALITY = 'nationality'
+
+export const ORIGIN_ALL = 'all'
+export const ORIGIN_API = 'api'
+export const ORIGIN_DB = 'db'
 
 export const API_URL_DRIVERS = API_URL_BASE + '/drivers'
 export const API_URL_DRIVERS_SEARCH = API_URL_DRIVERS + '/search'
@@ -55,3 +64,20 @@ export const INICIAL_CREATED = {
   wiki: '',
   teams: []
 }
+
+export const INICIAL_KEYS = {
+  loader: true,
+  hasLoad: false,
+  paginationItems: 9,
+  filterOrigin: 'all',
+  paginationCurrentPage: 1,
+  paginationCurrentData: [],
+  searchField: FILED_NAME,
+  searchValue: '',
+  seatchHasFilter: false,
+  orderField: 'id'
+}
+
+export const DEV_AVATAR = 'https://media.licdn.com/dms/image/C4E03AQHUFU9CIwzXZg/profile-displayphoto-shrink_200_200/0/1610106662578?e=1701302400&v=beta&t=jCKkvXuc5Rx8g-zGKL5xFA1MIhyeHGQc6DJ4ZPGtokw'
+export const DEV_GITHUB = 'https://github.com/andresfrei/pi-drivers'
+export const DEV_LINKEDIN = 'https://www.linkedin.com/in/andresfrei'

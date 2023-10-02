@@ -3,6 +3,7 @@ const { Driver, Team } = require('../db')
 
 // Funcion para crear un driver
 const createDriverService = async (data) => {
+  console.log(data)
   const { teams, ...restOfData } = data
   const driver = await Driver.create(restOfData)
   driver.addTeams(teams)

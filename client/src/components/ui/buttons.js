@@ -20,7 +20,8 @@ export const ButtonPrimary = styled.button`
   &:disabled {
     background-color: #ccc; 
     color: #666;            
-    cursor: not-allowed;    
+    cursor: not-allowed;
+    pointer-events: none;    
   }
 `
 export const ButtonSecondary = styled.button`
@@ -43,7 +44,8 @@ export const ButtonSecondary = styled.button`
   &:disabled {
     background-color: #ccc; 
     color: #666;            
-    cursor: not-allowed;    
+    cursor: not-allowed; 
+    pointer-events: none;   
   }
 `
 export const ButtonLink = styled.button`
@@ -62,7 +64,8 @@ export const ButtonLink = styled.button`
   &:disabled {
     background-color: #ccc; 
     color: #666;            
-    cursor: not-allowed;    
+    cursor: not-allowed;
+    pointer-events: none;    
   }
 `
 export const ButtonPaginate = styled.button`
@@ -70,11 +73,13 @@ export const ButtonPaginate = styled.button`
   height: ${props => props.height || '100%'};
   color:black;
   background-color:white;
-  border: 1px solid rgba(0, 0, 0, 0.53);
-  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
   &:disabled {
     background-color: #a8a7a7; 
     color: #666;            
     cursor: not-allowed;    
-  }
+    pointer-events: none;
+  }  
 `

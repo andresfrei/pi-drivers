@@ -30,6 +30,7 @@ export const CardImage = styled.img`
   top:0;
   display: block;
   object-fit: cover;
+  transition: transform 0.2s ease;
   filter: grayscale(100%);
   &:hover {
     filter: none;
