@@ -93,7 +93,9 @@ export default function CreatePage () {
                     isError = {hasFieldError('image')}
                   />
                   <SelectInput
+                    name='nationality'
                     value={values.nationality}
+                    onChange={handleChange}
                     isError = {!!errors.nationality}
                   >
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }

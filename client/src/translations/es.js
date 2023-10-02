@@ -16,6 +16,14 @@ const dictionary = {
     create: 'crear',
     more: 'opciones'
   },
+  fields: {
+    firstname: 'nombre',
+    lastname: 'apellido',
+    nationality: 'nacionalidad',
+    birth: 'nacimiento',
+    asc: 'ascendente',
+    des: 'descendente'
+  },
   searchbar: {
     search: 'ingrese',
     btnsearch: 'buscar',

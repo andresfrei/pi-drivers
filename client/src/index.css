@@ -354,3 +354,8 @@ button {
       opacity: 0.2;
   }
 }
+
+.option-label{
+  min-width: 228px;
+  margin-left: 20px;;
+}

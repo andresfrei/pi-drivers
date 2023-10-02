@@ -45,7 +45,8 @@ class Validator {
   }
 
   isDate (key) {
-    const regex = /^\d{2}-\d{2}-\d{4}$/
+    // const regex = /^\d{2}-\d{2}-\d{4}$/
+    const regex = /^\d{2}[-/]\d{2}[-/]\d{4}$/
     const res = regex.test(this.values[key])
     !res && this._addError(key, 'It is not a date')
     return res
