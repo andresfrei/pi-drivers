@@ -48,7 +48,7 @@ const dictionary = {
     description: 'descripcion',
     image: 'url imagen',
     nationality: 'nacionalidad',
-    birth: 'nacimiento',
+    birth: 'nacimiento (dd/mm/yyyy)',
     wiki: 'url wikipedia',
     teams: 'equipos (separados por coma)',
     btnSave: 'guardar',

@@ -15,7 +15,7 @@ import useKey from '../hooks/useKey'
 import useLanguage from '../hooks/useLanguage'
 import useDrivers from '../hooks/useDrivers'
 
-import { validateNewDriver } from '../validator/drivers.validator'
+import { createDriverValidate } from '../validator/drivers.validator'
 
 export default function CreatePage () {
   const { word } = useLanguage('createdpage')
@@ -30,10 +30,13 @@ export default function CreatePage () {
     handleChange,
     handleAddSelected,
     handleSubmit,
+    fieldValidate,
+    hasFieldError,
+    hasError,
     errors
   } = useForm({
     initialValues: INICIAL_CREATED,
-    validate: validateNewDriver
+    validate: createDriverValidate
   })
 
   const handleSelect = (value) => handleAddSelected('teams', value)
@@ -54,34 +57,40 @@ export default function CreatePage () {
                   <CardImage width='400px' height='400px' src={values.image || DRIVER_IMAGE_DEFAULT} />
                 </Col>
                 <Col className='flex flex-column w-100 mx-3 my-3'>
+
                   <Input
                     autoFocus
                     name='firstname'
                     placeholder={word('firstname')}
                     value={values.firstname}
                     onChange={handleChange}
-                    isError = {!!errors.firstname}
+                    onKeyDown={fieldValidate}
+                    isError = {hasFieldError('firstname')}
                   />
+
                   <Input
                     name='lastname'
                     placeholder={word('lastname')}
                     value={values.lastname}
                     onChange={handleChange}
-                    isError = {!!errors.lastname}
+                    onKeyDown={fieldValidate}
+                    isError = {hasFieldError('lastname')}
                   />
+
                   <TextArea
+                    height = '200px'
                     name='description'
                     placeholder={word('description')}
                     value={values.description}
                     onChange={handleChange}
-                    isError = {!!errors.description}
                   />
                   <Input
                     name='image'
                     placeholder={word('image')}
                     value={values.image}
                     onChange={handleChange}
-                    isError = {!!errors.image}
+                    onKeyDown={fieldValidate}
+                    isError = {hasFieldError('image')}
                   />
                   <SelectInput
                     value={values.nationality}
@@ -90,19 +99,21 @@ export default function CreatePage () {
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }
                   </SelectInput>
                   <Input
-                    type='date'
                     name='birth'
                     placeholder={word('birth')}
                     value={values.birth}
                     onChange={handleChange}
-                    isError = {!!errors.birth}
+                    onKeyDown={fieldValidate}
+                    isError = {hasFieldError('birth')}
                   />
                   <Input
                     name='wiki'
                     placeholder={word('wiki')}
                     value={values.wiki}
                     onChange={handleChange}
-                    isError = {!!errors.wiki}
+                    onKeyDown={fieldValidate}
+                    isError = {hasFieldError('wikie')}
+
                   />
                   <MultiSelect
                     selectedOptions={values.teams}
@@ -114,6 +125,7 @@ export default function CreatePage () {
                     />
                     <div className='flex'>
                       <ButtonPrimary
+                        disabled = {hasError}
                         onClick={() => handleSubmit(createDriver)}
                       >{word('btnSave')}</ButtonPrimary>
                       <ButtonSecondary

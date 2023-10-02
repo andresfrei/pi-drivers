@@ -44,6 +44,13 @@ class Validator {
     return res
   }
 
+  isDate (key) {
+    const regex = /^\d{2}-\d{2}-\d{4}$/
+    const res = regex.test(this.values[key])
+    !res && this._addError(key, 'It is not a date')
+    return res
+  }
+
   isEmail (key) {
     this.filds.add(key)
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
