@@ -97,6 +97,7 @@ export default function CreatePage () {
                     value={values.nationality}
                     onChange={handleChange}
                     isError = {!!errors.nationality}
+                    defaultValue='American'
                   >
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }
                   </SelectInput>
@@ -135,6 +136,7 @@ export default function CreatePage () {
                       >{word('btnCancel')}</ButtonSecondary>
                     </div>
                 </Col>
+                { hasError && <p>{JSON.stringify(errors)}</p>}
               </Row>
             </Container>
           </Card>
