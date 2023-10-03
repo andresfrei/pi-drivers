@@ -83,3 +83,21 @@ export const ButtonPaginate = styled.button`
     pointer-events: none;
   }  
 `
+export const ButtonClose = styled.button`
+  position:absolute;
+  border: none;
+  box-shadow:none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease; 
+  font-size:32px;
+  padding-right: 10px;
+  padding-left:10px;
+  right:0px;
+  top: -10px;
+  border-radius: 10px;
+
+  &:hover {
+  transform: scale(1.08);
+  }
+`

@@ -1,17 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
-// const { createDriverMiddleware } = require('../middlewares/driver.middleware')
-const { getAllDrivers, searchDrivrs, createDriver } = require('../controllers/drivers.controller')
+const { createDriverMiddleware } = require('../middlewares/driver.middleware')
+const { getAllDrivers, searchDrivers, createDriver, getDriversId } = require('../controllers/drivers.controller')
 
 router.get('/', getAllDrivers)
-router.get('/search', searchDrivrs)
+router.get('/search', searchDrivers)
+router.get('/:idDriver', getDriversId)
 
-// router.post('/', createDriverMiddleware, createDriver)
-router.post('/', createDriver)
+router.post('/', createDriverMiddleware, createDriver)
 
 // router.get('/name', getDriversName)
-
-// router.get('/:idDriver', getDriversId)
 
 module.exports = router

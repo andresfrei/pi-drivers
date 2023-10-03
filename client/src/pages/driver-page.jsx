@@ -11,10 +11,13 @@ import { ButtonPrimary, ButtonSecondary } from '../components/ui/buttons'
 import { formatDate } from '../libs/format'
 
 import useFilter from '../hooks/useFilter'
+import Icon from '../components/icon'
+
+import deleteIcon from '../assets/paperbin.svg'
 
 export default function DriverPage () {
   const { id } = useParams()
-  const { driver } = useDriver(id)
+  const { driver, handleDelete } = useDriver(id)
   const { firstname, lastname, image, nationality, teams, description, wiki, birth } = driver
 
   const { setSearchFiled, setSearchValue, handleFilter } = useFilter()
@@ -22,6 +25,9 @@ export default function DriverPage () {
   const { word } = useLanguage('driver')
 
   const navigate = useNavigate()
+
+  // Me fijo si es de DB
+  const hasDeleted = id.length > 5
 
   const handleFilterByTeam = (team) => {
     setSearchFiled(FILED_TEAM)
@@ -49,8 +55,16 @@ export default function DriverPage () {
                 src={image || DRIVER_IMAGE_DEFAULT}
               />
             </Col>
-            <Col className='flex flex-column'>
+            <Col className='flex flex-column relative'>
+              {hasDeleted &&
+                <Icon
+                  className='btn-driver-delete'
+                  src={deleteIcon}
+                  onClick={handleDelete}
+                />
+              }
               <h2 className='driver-page-title'>{`${firstname} ${lastname}`}</h2>
+              <h5 className='driver-id'><span>ID: </span>{id + hasDeleted}</h5>
               <div className='flex align-items-center '>
                 <h4 className='driver-page-natonality' onClick={handleFilterByNationality}>{nationality}</h4>
                 <h4 className='driver-page-subtitle'>{formatDate(birth)}</h4>

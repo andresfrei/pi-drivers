@@ -359,3 +359,17 @@ button {
   min-width: 228px;
   margin-left: 20px;;
 }
+
+.driver-id{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.driver-id span{
+  color: gray;
+  
+}
+
+.btn-driver-delete{
+  position: absolute !important;
+}
