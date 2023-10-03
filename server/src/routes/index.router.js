@@ -9,4 +9,6 @@ router.use('/drivers', driversRouter)
 router.use('/teams', teamsRouter)
 router.use('/nationalities', nationalitiesRouter)
 
+router.get('/', (req, res) => res.send('HOLA'))
+
 module.exports = router
