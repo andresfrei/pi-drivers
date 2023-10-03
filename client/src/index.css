@@ -359,3 +359,24 @@ button {
   min-width: 228px;
   margin-left: 20px;;
 }
+
+.driver-id{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.driver-id span{
+  color: gray;
+  
+}
+
+.driver-delete{
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  transition: transform 0.2s ease;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}

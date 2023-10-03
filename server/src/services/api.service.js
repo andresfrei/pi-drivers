@@ -1,6 +1,10 @@
 const axios = require('axios')
 const { API_URL_DRIVERS } = require('../config/constants')
 
+const findOneDriverFromAPI = async (id) => {
+  const driver = await axios.get(`${API_URL_DRIVERS}/${id}`)
+}
+
 // Funcion para buscar Drivers en la API
 const findDriversAPIService = async (params) => {
   let data
@@ -85,5 +89,6 @@ const teamsToArray = (teams) => teams.split(',').map(team => team.trim())
 module.exports = {
   findDriversAPIService,
   findTeamsAPIService,
-  findNationalitiesAPIService
+  findNationalitiesAPIService,
+  findOneDriverFromAPI
 }

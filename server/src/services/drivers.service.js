@@ -76,7 +76,12 @@ const searchByNationality = async (nationality) => {
 const findOneDriverService = async (idDriver) => {
   const driver = await Driver.findByPk(idDriver, { include: [Team] })
   if (!driver) return {}
-  return driver.toJSON()
+  return formattedDrivers(driver)
+}
+
+const deleteDriverService = async (id) => {
+  await Driver.destroy({ where: { id } })
+  return true
 }
 
 const formattedDrivers = (driver) => {
@@ -98,5 +103,6 @@ module.exports = {
   searchDriverService,
   findOneDriverService,
   findAllDriversService,
-  createDriverService
+  createDriverService,
+  deleteDriverService
 }

@@ -35,3 +35,10 @@ export const createDriverService = async (data) => {
   }
   return await fetchAPIService(API_URL_DRIVERS, options)
 }
+
+export const deleteDriverService = async (id) => {
+  const options = {
+    method: 'DELETE'
+  }
+  return await fetchAPIService(`${API_URL_DRIVERS}/${id}`, options)
+}
