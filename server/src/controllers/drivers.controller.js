@@ -1,5 +1,5 @@
 const { findDriversAPIService, findNationalitiesAPIService, findOneDriverFromAPI } = require('../services/api.service')
-const { findAllDriversService, searchDriverService, createDriverService, findOneDriverService } = require('../services/drivers.service')
+const { findAllDriversService, searchDriverService, createDriverService, findOneDriverService, deleteDriverService } = require('../services/drivers.service')
 const { findAllTeamsService } = require('../services/team.service')
 
 // Controlador para buscar todos los drivers
@@ -61,4 +61,14 @@ const createDriver = async (req, res) => {
   }
 }
 
-module.exports = { getAllDrivers, searchDrivers, createDriver, getDriverByID }
+const deleteDriver = async (req, res) => {
+  try {
+    const { id } = req.params
+    await deleteDriverService(id)
+    res.status(200).json({ message: 'driver deleted' })
+  } catch ({ message }) {
+    res.status(400).json(message)
+  }
+}
+
+module.exports = { getAllDrivers, searchDrivers, createDriver, getDriverByID, deleteDriver }

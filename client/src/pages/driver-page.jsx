@@ -58,7 +58,7 @@ export default function DriverPage () {
             <Col className='flex flex-column relative'>
               {hasDeleted &&
                 <Icon
-                  className='btn-driver-delete'
+                  className='driver-delete'
                   src={deleteIcon}
                   onClick={handleDelete}
                 />

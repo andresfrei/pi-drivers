@@ -370,6 +370,13 @@ button {
   
 }
 
-.btn-driver-delete{
-  position: absolute !important;
+.driver-delete{
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  transition: transform 0.2s ease;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 }
