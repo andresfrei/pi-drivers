@@ -97,8 +97,8 @@ export default function CreatePage () {
                     value={values.nationality}
                     onChange={handleChange}
                     isError = {!!errors.nationality}
-                    defaultValue='American'
                   >
+                    <option value="" selected>{word('nationality')}</option>
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }
                   </SelectInput>
                   <Input
@@ -119,6 +119,7 @@ export default function CreatePage () {
 
                   />
                   <MultiSelect
+                    placeholder = {word('teams')}
                     selectedOptions={values.teams}
                     setSelectedOptions={handleSelect}
                     title='Equipos'

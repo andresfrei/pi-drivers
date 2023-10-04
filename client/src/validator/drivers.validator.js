@@ -28,6 +28,12 @@ export const validateImage = (image) => {
   return validate.resolve()
 }
 
+export const validateNationality = (nationality) => {
+  const validate = new Validator({ nationality })
+  validate.isText()
+  return validate.resolve()
+}
+
 export const validateDataRequired = (data) => {
   const validate = new Validator(data)
 
@@ -44,6 +50,7 @@ export const createDriverValidate = {
   onSubmit: validateDataRequired,
   firstname: validateFirstname,
   lastname: validateLastname,
+  nationality: validateNationality,
   image: validateImage,
   birth: validateBirth
 }

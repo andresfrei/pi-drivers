@@ -13,24 +13,24 @@ const dictionary = {
     exit: 'Salir'
   },
   toolbar: {
-    create: 'crear',
-    more: 'opciones'
+    create: 'Crear',
+    more: 'Opciones'
   },
   fields: {
-    firstname: 'nombre',
-    lastname: 'apellido',
-    nationality: 'nacionalidad',
-    birth: 'nacimiento',
-    asc: 'ascendente',
-    des: 'descendente'
+    firstname: 'Nombre',
+    lastname: 'Apellido',
+    nationality: 'Nacionalidad',
+    birth: 'Nacimiento',
+    asc: 'Ascendente',
+    des: 'Descendente'
   },
   searchbar: {
-    search: 'ingrese',
-    btnsearch: 'buscar',
-    btnclear: 'quitar',
-    name: 'nombre',
-    team: 'equipo',
-    nationality: 'nacionalidad'
+    search: 'Ingrese',
+    btnsearch: 'Buscar',
+    btnclear: 'Quitar',
+    name: 'Nombre',
+    team: 'Equipo',
+    nationality: 'Nacionalidad'
   },
   driverslist: {
     title: 'Listado de pilotos'
@@ -46,21 +46,25 @@ const dictionary = {
     last: 'ultimo'
   },
   driver: {
-    btnback: 'volver',
-    btnwiki: 'mas'
+    btnback: 'Volver',
+    btnwiki: 'Mas',
+    msgBoxTitle: 'Borrar piloto',
+    msgBoxMessage: '¿Confirma borrar al piloto?',
+    confirm: 'Eliminar',
+    cancel: 'Cancelar'
   },
   createdpage: {
     title: 'Crear un piloto',
-    firstname: 'nombre',
-    lastname: 'apellido',
-    description: 'descripcion',
-    image: 'url imagen',
-    nationality: 'nacionalidad',
-    birth: 'nacimiento (dd/mm/yyyy)',
-    wiki: 'url wikipedia',
-    teams: 'equipos (separados por coma)',
-    btnSave: 'guardar',
-    btnCancel: 'cancelar'
+    firstname: 'Nombre',
+    lastname: 'Apellido',
+    description: 'Descripcion',
+    image: 'Url imagen',
+    nationality: 'Nacionalidad',
+    birth: 'Nacimiento (dd/mm/yyyy)',
+    wiki: 'Url wikipedia',
+    teams: 'Seleccione equipo',
+    btnSave: 'Guardar',
+    btnCancel: 'Cancelar'
   },
   errors: {
     api: 'UPS! Parece que hubo un error con la API. Intntente nuvalemnte'
@@ -69,7 +73,7 @@ const dictionary = {
     about: 'Acerca de',
     back: 'Vovler',
     text: `Drivers PI es parte del curso FullStack de Henry, particularmente el proyecto individual.
-Permite traer todos los pilotos de una API pública, pero tambien agregar nuestros propios pilotos y almacenarlos en una base de datos PosgresSQL.
+Permite traer todos los pilotos de una API pública, pero tambien agregar nuestros propios pilotos y almacenarlos en una base de datos PostgresSQL.
 No podíamos usar otra librería que las detalladas en el requerimiento.
 `
   }

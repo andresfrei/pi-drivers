@@ -50,7 +50,7 @@ export default function Pagination () {
       <SelectInput
         width='70px'
         value={currentPage}
-        onChange={(e) => jump(e.target.value)}
+        onChange={(e) => jump(Number(e.target.value))}
       >
       {options}
       </SelectInput>

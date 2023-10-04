@@ -10,10 +10,16 @@ export default function useForm ({ initialValues, validate }) {
       ...values,
       [name]: value
     })
+
+    // Si es un select fuerzo validación
+    const elementType = event.target.nodeName.toLowerCase()
+    elementType === 'select' && fieldValidate({ key: 'Enter', target: { name, value } })
   }
 
   const handleAddSelected = (field, value) => {
     let array
+
+    // Compruebo si el dato ya existe en la seleccion
     if (!values[field].includes(value)) array = [...values[field], value]
     else array = values[field].filter(item => item !== value)
     setValues({
@@ -25,6 +31,7 @@ export default function useForm ({ initialValues, validate }) {
   // Valido el campo al precionar TAB o Enter
   const fieldValidate = ({ key, target: { name, value } }) => {
     if ((key === 'Enter' || key === 'Tab') && validate[name]) {
+      console.log('VALIDO')
       let currentFieldErrors = []
       // Valido solo si tiene datos
       if (value) {
@@ -50,7 +57,7 @@ export default function useForm ({ initialValues, validate }) {
   const handleHasError = () => {
     const keys = Object.keys(errors)
     const res = keys.filter(key => !!errors[key]?.length)
-    return res.length
+    return !!res.length
   }
 
   const hasError = handleHasError()

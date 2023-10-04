@@ -4,3 +4,10 @@ export const formatDate = (stringDate) => {
   const year = stringDate.slice(0, 4)
   return `${day}/${month}/${year}`
 }
+
+export const formatDateSQL = (stringDate) => {
+  const date = stringDate.replace('-', '/')
+  const [day, month, year] = date.split('/')
+  const birth = `${year}-${month}-${day}`
+  return birth
+}
