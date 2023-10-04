@@ -3,7 +3,6 @@ const { Driver, Team } = require('../db')
 
 // Funcion para crear un driver
 const createDriverService = async (data) => {
-  console.log(data)
   const { teams, ...restOfData } = data
   const driver = await Driver.create(restOfData)
   driver.addTeams(teams)
@@ -80,8 +79,8 @@ const findOneDriverService = async (idDriver) => {
 }
 
 const deleteDriverService = async (id) => {
-  await Driver.destroy({ where: { id } })
-  return true
+  const driver = await Driver.destroy({ where: { id } })
+  return !!driver
 }
 
 const formattedDrivers = (driver) => {
