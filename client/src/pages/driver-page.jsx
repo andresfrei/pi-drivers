@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
+// import { useLoaderData } from 'react-router-dom'
 
 import { APP_URL_HOME, DRIVER_IMAGE_DEFAULT, FILED_NATIONALITY, FILED_TEAM } from '../config/constants'
 
@@ -16,8 +17,13 @@ import Icon from '../components/icon'
 import deleteIcon from '../assets/paperbin.svg'
 import { useState } from 'react'
 import MessageBox from '../components/message-box'
+import { findDriverByID } from '../services/drivers.service'
 
 export default function DriverPage () {
+  // Uso loader
+  // const driver = useLoaderData()
+
+  // Uso estado global
   const { id } = useParams()
   const { driver, handleDelete } = useDriver(id)
   const { firstname, lastname, image, nationality, teams, description, wiki, birth } = driver
@@ -125,4 +131,14 @@ export default function DriverPage () {
       }
     </Container>
   )
+}
+
+export const loadDriver = async ({ params }) => {
+  try {
+    const { id } = params
+    const data = await findDriverByID(id)
+    return data.payload
+  } catch (error) {
+
+  }
 }
