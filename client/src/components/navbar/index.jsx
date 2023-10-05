@@ -6,10 +6,11 @@ import { APP_URL_ABOUT, APP_URL_HOME, APP_URL_LANDING } from '../../config/const
 import { ButtonPrimary, ButtonSecondary } from '../ui/buttons'
 import useLanguage from '../../hooks/useLanguage'
 import useLoadData from '../../hooks/useLoadData'
+import { SelectInput } from '../ui/inputs'
 
 export default function NavbarComponent () {
   const navigate = useNavigate()
-  const { word } = useLanguage('navbar')
+  const { word, selected, setLanguage } = useLanguage('navbar')
   const { clearState } = useLoadData()
 
   const { pathname } = useLocation()
@@ -30,7 +31,18 @@ export default function NavbarComponent () {
               <Logo height='25px'/>
             </Link>
           </Col>
-          <Col className='flex justify-content-end'>
+          <Col className='flex justify-content-end align-items-center '>
+            <SelectInput
+              hidden = {hidden}
+              height='50px'
+              width='70px'
+              value={selected}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="es">ES</option>
+              <option value="en">EN</option>
+              <option value="br">BR</option>
+            </SelectInput>
             <ButtonSecondary
               width = '150px'
               hidden = {hidden}
