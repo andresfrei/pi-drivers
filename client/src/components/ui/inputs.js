@@ -45,6 +45,7 @@ export const SelectInput = styled.select`
   border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
   width: ${props => props.width || '100%'};
+  height: ${props => props.height || 'auto'};
   border-radius: 6px;
   writing-mode: horizontal-tb !important;
   background-color: white;
