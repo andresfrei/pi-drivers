@@ -59,7 +59,7 @@ export default function AbountPage () {
                   <h5 className='driver-page-team'>Custom hooks</h5>
                   <h5 className='driver-page-team'>Express</h5>
                   <h5 className='driver-page-team'>Sequelize</h5>
-                  <h5 className='driver-page-team'>PostgreSQL</h5>
+                  <h5 className='driver-page-team'>PostgresSQL</h5>
                   <h5 className='driver-page-team'>Axios</h5>
                 </div>
               </div>

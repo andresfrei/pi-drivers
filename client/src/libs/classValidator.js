@@ -134,7 +134,11 @@ class Validator {
 
   notEmpty (key) {
     this.filds.add(key)
-    const res = !!this.values[key]
+
+    let res
+    if (Array.isArray(this.values[key])) res = !!this.values[key].length
+    else res = !!this.values[key]
+
     !res && this._addError(key, 'The value cannot be empty')
     return res
   }

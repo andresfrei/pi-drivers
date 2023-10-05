@@ -14,11 +14,15 @@ import useFilter from '../hooks/useFilter'
 import Icon from '../components/icon'
 
 import deleteIcon from '../assets/paperbin.svg'
+import { useState } from 'react'
+import MessageBox from '../components/message-box'
 
 export default function DriverPage () {
   const { id } = useParams()
   const { driver, handleDelete } = useDriver(id)
   const { firstname, lastname, image, nationality, teams, description, wiki, birth } = driver
+
+  const [showDelete, setShowDelete] = useState(false)
 
   const { setSearchFiled, setSearchValue, handleFilter } = useFilter()
 
@@ -43,6 +47,11 @@ export default function DriverPage () {
     navigate(APP_URL_HOME)
   }
 
+  const handleConfirDelete = () => {
+    setShowDelete(false)
+    handleDelete()
+  }
+
   return (
     <Container className='page-h-full'>
       <Row className='justify-content-center align-items-center page-h-full'>
@@ -60,11 +69,11 @@ export default function DriverPage () {
                 <Icon
                   className='driver-delete'
                   src={deleteIcon}
-                  onClick={handleDelete}
+                  onClick={() => setShowDelete(true)}
                 />
               }
               <h2 className='driver-page-title'>{`${firstname} ${lastname}`}</h2>
-              <h5 className='driver-id'><span>ID: </span>{id + hasDeleted}</h5>
+              <h5 className='driver-id'><span>ID: </span>{id}</h5>
               <div className='flex align-items-center '>
                 <h4 className='driver-page-natonality' onClick={handleFilterByNationality}>{nationality}</h4>
                 <h4 className='driver-page-subtitle'>{formatDate(birth)}</h4>
@@ -101,6 +110,19 @@ export default function DriverPage () {
           </Row>
         </Card>
       </Row>
+      { showDelete &&
+        <MessageBox
+          title={word('msgBoxTitle')}
+          message={word('msgBoxMessage')}
+        >
+          <ButtonPrimary
+            onClick={handleConfirDelete}
+          >{word('confirm')}</ButtonPrimary>
+          <ButtonSecondary
+            onClick={() => setShowDelete(false)}
+          >{word('cancel')}</ButtonSecondary>
+        </MessageBox>
+      }
     </Container>
   )
 }

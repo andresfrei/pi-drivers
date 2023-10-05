@@ -1,6 +1,6 @@
 import useDrivers from './useDrivers'
 import useKey from './useKey'
-import { KEY_FILTER_ORIGIN, KEY_ORDER_ASC, KEY_ORDER_FIELD, KEY_PAGINATION_CURRENT_DATA, KEY_PAGINATION_CURRENT_PAGE, KEY_PAGINATION_ITEMS, KEY_SEARCH_HAS_FILTER } from '../config/constants'
+import { KEY_FILTER_ORIGIN, KEY_ORDER_ASC, KEY_ORDER_FIELD, KEY_PAGINATION_CURRENT_DATA, KEY_PAGINATION_CURRENT_PAGE, KEY_PAGINATION_ITEMS, KEY_PAGINATION_MAX_PAGE, KEY_SEARCH_HAS_FILTER } from '../config/constants'
 import { useEffect } from 'react'
 
 export default function usePagination () {
@@ -9,6 +9,7 @@ export default function usePagination () {
   const [elementPerPage, setElementPerPage] = useKey(KEY_PAGINATION_ITEMS)
   const [currentPage, setCurrentPage] = useKey(KEY_PAGINATION_CURRENT_PAGE)
   const [currentData, setCurrentData] = useKey(KEY_PAGINATION_CURRENT_DATA)
+  const [maxPage, setMaxPage] = useKey(KEY_PAGINATION_MAX_PAGE)
 
   const [filterOrigin] = useKey(KEY_FILTER_ORIGIN)
 
@@ -16,8 +17,6 @@ export default function usePagination () {
 
   const [orderField] = useKey(KEY_ORDER_FIELD)
   const [orderAsc] = useKey(KEY_ORDER_ASC)
-
-  const maxPage = !showDrivers ? 0 : Math.ceil(showDrivers.length / elementPerPage)
 
   const next = () => setCurrentPage(currentPage + 1)
 
@@ -30,6 +29,7 @@ export default function usePagination () {
     const begin = (currentPage - 1) * elementPerPage
     const end = begin + elementPerPage
     setCurrentData(showDrivers.slice(begin, end))
+    setMaxPage(!showDrivers ? 0 : Math.ceil(showDrivers.length / elementPerPage))
   },
   [
     elementPerPage,

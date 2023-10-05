@@ -11,6 +11,7 @@ export const KEY_ERROR = 'globalError'
 // Cantidad de paginacion
 export const KEY_PAGINATION_ITEMS = 'paginationItems'
 export const KEY_PAGINATION_CURRENT_PAGE = 'paginationCurrentPage'
+export const KEY_PAGINATION_MAX_PAGE = 'paginationMaxPage'
 export const KEY_PAGINATION_CURRENT_DATA = 'paginationCurrentData'
 
 // Estados de la API
@@ -72,10 +73,12 @@ export const INICIAL_KEYS = {
   filterOrigin: 'all',
   paginationCurrentPage: 1,
   paginationCurrentData: [],
+  paginationMaxPage: 0,
   searchField: FILED_NAME,
   searchValue: '',
   seatchHasFilter: false,
-  orderField: 'id'
+  orderField: 'id',
+  orderAsc: 'asc'
 }
 
 export const DEV_AVATAR = 'https://media.licdn.com/dms/image/C4E03AQHUFU9CIwzXZg/profile-displayphoto-shrink_200_200/0/1610106662578?e=1701302400&v=beta&t=jCKkvXuc5Rx8g-zGKL5xFA1MIhyeHGQc6DJ4ZPGtokw'

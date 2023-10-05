@@ -67,7 +67,12 @@ const SelectBody = styled.div`
     margin-top: 15px;
   `
 
-const MultiSelect = ({ options, title = 'Select', width = '100%', selectedOptions, setSelectedOptions }) => {
+const MultiSelect = ({ options, title = 'Select', width = '100%', selectedOptions, setSelectedOptions, placeholder = '', value = '' }) => {
+  const handleChange = (event) => {
+    setSelectedOptions(event.target.value)
+    value = ''
+  }
+
   return (
     <MultiSelectWrapper
       width = {width}
@@ -75,9 +80,10 @@ const MultiSelect = ({ options, title = 'Select', width = '100%', selectedOption
       <SelectHeader>
         <SelectTitle>{title}:</SelectTitle>
         <SelectInput
-          defaultValue=''
-          onChange={(e) => setSelectedOptions(e.target.value)}
+          value={value}
+          onChange={handleChange}
         >
+          <option value="" selected>{placeholder}</option>
           { options.map(option => <option key={option} value={option}>{option}</option>) }
         </SelectInput>
       </SelectHeader>
