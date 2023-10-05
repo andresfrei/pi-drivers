@@ -6,7 +6,8 @@ const MultiSelectWrapper = styled.div`
   width: ${props => props.width || '100%'};
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid ;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
   border-radius: 6px;
   writing-mode: horizontal-tb !important;
@@ -67,14 +68,17 @@ const SelectBody = styled.div`
     margin-top: 15px;
   `
 
-const MultiSelect = ({ options, title = 'Select', width = '100%', selectedOptions, setSelectedOptions, placeholder = '', value = '' }) => {
+const MultiSelect = ({ options, title = 'Select', width = '100%', selectedOptions, setSelectedOptions, placeholder = '', value = '', isError = false }) => {
   const handleChange = (event) => {
     setSelectedOptions(event.target.value)
     value = ''
   }
 
+  console.log('multiSelect ', isError)
+
   return (
     <MultiSelectWrapper
+      isError = {isError}
       width = {width}
     >
       <SelectHeader>

@@ -98,7 +98,7 @@ export default function CreatePage () {
                     name='nationality'
                     value={values.nationality}
                     onChange={handleChange}
-                    isError = {!!errors.nationality}
+                    isError = {hasFieldError('nationality')}
                   >
                     <option value="" selected>{word('nationality')}</option>
                     { nationalities.map(nationality => <Option key={nationality}>{nationality}</Option>) }
@@ -127,7 +127,7 @@ export default function CreatePage () {
                     title='Equipos'
                     width='380px'
                     options={teams.map(team => team.name)}
-                    isError = {!!errors.teams}
+                    isError = {hasFieldError('teams')}
                     />
                     <div className='flex'>
                       <ButtonPrimary

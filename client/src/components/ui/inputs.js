@@ -41,7 +41,8 @@ export const TextArea = styled.textarea`
 export const SelectInput = styled.select`
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid ;
+  border-color: ${props => (props.isError ? 'red' : '#666')};
   padding: 8px;
   width: ${props => props.width || '100%'};
   border-radius: 6px;
