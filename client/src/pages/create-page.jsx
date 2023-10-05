@@ -16,6 +16,7 @@ import useLanguage from '../hooks/useLanguage'
 import useDrivers from '../hooks/useDrivers'
 
 import { createDriverValidate } from '../validator/drivers.validator'
+import FormErrors from '../components/form-errors'
 
 export default function CreatePage () {
   const { word } = useLanguage('createdpage')
@@ -30,7 +31,7 @@ export default function CreatePage () {
     handleChange,
     handleAddSelected,
     handleSubmit,
-    fieldValidate,
+    handleBlur,
     hasFieldError,
     hasError,
     errors
@@ -64,7 +65,7 @@ export default function CreatePage () {
                     placeholder={word('firstname')}
                     value={values.firstname}
                     onChange={handleChange}
-                    onKeyDown={fieldValidate}
+                    onKeyDown={handleBlur}
                     isError = {hasFieldError('firstname')}
                   />
 
@@ -73,7 +74,7 @@ export default function CreatePage () {
                     placeholder={word('lastname')}
                     value={values.lastname}
                     onChange={handleChange}
-                    onKeyDown={fieldValidate}
+                    onKeyDown={handleBlur}
                     isError = {hasFieldError('lastname')}
                   />
 
@@ -83,13 +84,14 @@ export default function CreatePage () {
                     placeholder={word('description')}
                     value={values.description}
                     onChange={handleChange}
+                    isError = {hasFieldError('description')}
                   />
                   <Input
                     name='image'
                     placeholder={word('image')}
                     value={values.image}
                     onChange={handleChange}
-                    onKeyDown={fieldValidate}
+                    onKeyDown={handleBlur}
                     isError = {hasFieldError('image')}
                   />
                   <SelectInput
@@ -106,7 +108,7 @@ export default function CreatePage () {
                     placeholder={word('birth')}
                     value={values.birth}
                     onChange={handleChange}
-                    onKeyDown={fieldValidate}
+                    onKeyDown={handleBlur}
                     isError = {hasFieldError('birth')}
                   />
                   <Input
@@ -114,8 +116,8 @@ export default function CreatePage () {
                     placeholder={word('wiki')}
                     value={values.wiki}
                     onChange={handleChange}
-                    onKeyDown={fieldValidate}
-                    isError = {hasFieldError('wikie')}
+                    onKeyDown={handleBlur}
+                    isError = {hasFieldError('wiki')}
 
                   />
                   <MultiSelect
@@ -136,8 +138,8 @@ export default function CreatePage () {
                         onClick={() => navigate(APP_URL_HOME)}
                       >{word('btnCancel')}</ButtonSecondary>
                     </div>
+                    { hasError && <FormErrors errors={errors}/>}
                 </Col>
-                { hasError && <p>{JSON.stringify(errors)}</p>}
               </Row>
             </Container>
           </Card>

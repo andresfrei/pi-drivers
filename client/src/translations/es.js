@@ -19,8 +19,12 @@ const dictionary = {
   fields: {
     firstname: 'Nombre',
     lastname: 'Apellido',
+    description: 'Descripcion',
+    image: 'Imagen',
     nationality: 'Nacionalidad',
     birth: 'Nacimiento',
+    wiki: 'Wiki',
+    teams: 'Equipo',
     asc: 'Ascendente',
     des: 'Descendente'
   },
@@ -66,6 +70,7 @@ const dictionary = {
     btnSave: 'Guardar',
     btnCancel: 'Cancelar'
   },
+
   errors: {
     api: 'UPS! Parece que hubo un error con la API. Intntente nuvalemnte'
   },

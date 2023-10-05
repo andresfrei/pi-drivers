@@ -380,3 +380,11 @@ button {
     transform: scale(1.1);
   }
 }
+.message-error{
+  color: red;
+  margin: 0;
+  padding: 0;
+  & span{
+    font-weight: bold;
+  }
+}

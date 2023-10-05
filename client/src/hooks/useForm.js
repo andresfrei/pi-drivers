@@ -6,6 +6,9 @@ export default function useForm ({ initialValues, validate }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target
+    const clearErrors = { ...errors }
+    clearErrors[name] = []
+    setErrors(clearErrors)
     setValues({
       ...values,
       [name]: value
@@ -13,7 +16,7 @@ export default function useForm ({ initialValues, validate }) {
 
     // Si es un select fuerzo validación
     const elementType = event.target.nodeName.toLowerCase()
-    elementType === 'select' && fieldValidate({ key: 'Enter', target: { name, value } })
+    elementType === 'select' && handleBlur({ target: { name, value } })
   }
 
   const handleAddSelected = (field, value) => {
@@ -26,22 +29,24 @@ export default function useForm ({ initialValues, validate }) {
       ...values,
       [field]: array
     })
+
+    // Valido el campo
+    value = !!values[field].length
+    console.log(value, values[field].length)
+    handleBlur({ target: { name: field, value } })
   }
 
   // Valido el campo al precionar TAB o Enter
-  const fieldValidate = ({ key, target: { name, value } }) => {
-    if ((key === 'Enter' || key === 'Tab') && validate[name]) {
-      console.log('VALIDO')
-      let currentFieldErrors = []
-      // Valido solo si tiene datos
-      if (value) {
-        const res = validate[name](value)
-        currentFieldErrors = res.errors[name]
-      }
-      const newErrors = { ...errors }
-      newErrors[name] = currentFieldErrors
-      setErrors(newErrors)
+  const handleBlur = ({ target: { name, value } }) => {
+    let currentFieldErrors = []
+    // Valido solo si tiene datos
+    if (value) {
+      const res = validate[name](value)
+      currentFieldErrors = res.errors[name]
     }
+    const newErrors = { ...errors }
+    newErrors[name] = currentFieldErrors
+    setErrors(newErrors)
   }
 
   // Recibe como parametro la funcion a ejecutar
@@ -72,7 +77,7 @@ export default function useForm ({ initialValues, validate }) {
     handleClear,
     handleAddSelected,
     handleSubmit,
-    fieldValidate,
+    handleBlur,
     hasFieldError,
     errors,
     hasError

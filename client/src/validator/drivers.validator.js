@@ -16,6 +16,12 @@ export const validateLastname = (lastname) => {
   return validate.resolve()
 }
 
+export const validateDescription = (description) => {
+  const validate = new Validator({ description })
+  validate.isRequired('description')
+  return validate.resolve()
+}
+
 export const validateBirth = (birth) => {
   const validate = new Validator({ birth })
   validate.isDate('birth')
@@ -34,14 +40,30 @@ export const validateNationality = (nationality) => {
   return validate.resolve()
 }
 
+export const validateWiki = (wiki) => {
+  const validate = new Validator({ wiki })
+  validate.isUrl('wiki')
+  return validate.resolve()
+}
+
+export const validateTeams = (teams) => {
+  const validate = new Validator({ teams })
+  validate.notEmpty('teams')
+  return validate.resolve()
+}
+
 export const validateDataRequired = (data) => {
   const validate = new Validator(data)
 
-  validate.isRequired('lastname')
   validate.isRequired('firstname')
+  validate.isRequired('lastname')
+  validate.isRequired('description')
+  validate.isRequired('image')
   validate.isRequired('nationality')
   validate.isRequired('birth')
   validate.isRequired('teams')
+  validate.isRequired('wiki')
+  validate.notEmpty('teams')
 
   return validate.resolve()
 }
@@ -50,7 +72,10 @@ export const createDriverValidate = {
   onSubmit: validateDataRequired,
   firstname: validateFirstname,
   lastname: validateLastname,
+  description: validateDescription,
   nationality: validateNationality,
   image: validateImage,
-  birth: validateBirth
+  birth: validateBirth,
+  wiki: validateWiki,
+  teams: validateTeams
 }
