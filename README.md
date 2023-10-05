@@ -43,7 +43,7 @@ Si deseas contribuir a este proyecto, por favor abre un issue o una solicitud de
 
 ## Acerca del Autor
 
-Este proyecto fue creado por [Tu Nombre].
+Este proyecto fue creado por [Andres Frei](https://linkedin.com/in/andresfrei).
 
 ## Licencia
 
